@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+
+{% block title %}여행에서의 윤리적 소비 - 프로젝트{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="projects-header">
+        <h1>우리의 프로젝트</h1>
+        <p>윤리적 소비와 공정한 관광 구조를 형성하기 위해 진행 중인 <br>
+            '여행갈때생각해조'의 다양한 프로젝트를 확인해 보세요!</p>
+    </div>
+
+    <div class="projects-list">
+        <!-- 프로젝트 카드 1 -->
+        <div class="project-card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="{{ url_for('static', filename='images/tour-guide.png') }}" alt="윤리적 소비 가이드">
+                    <h3>프로젝트 1</h3>
+                    <h2>윤리적 소비 <br>가이드</h2>
+                </div>
+                <div class="card-back">
+                    <h2>윤리적 소비 <br>가이드</h2>
+                    <p>여행 중 윤리적 소비를 실천할 수 있는 가이드를 제공합니다. 공정한 관광과 지속 가능한 여행을 위한 체크리스트와 정보를 확인하세요.</p>
+                    <a href="/projects/1" class="details-btn">더 알아보기</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 프로젝트 카드 2 -->
+        <div class="project-card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="{{ url_for('static', filename='images/budget.png') }}" alt="여행 계획 시스템">
+                    <h3>프로젝트 2</h3>
+                    <h2>데이터 분석 기반 <br>여행 계획</h2>
+                </div>
+                <div class="card-back">
+                    <h2>데이터 분석 기반 <br>여행 계획</h2>
+                    <p>데이터 분석을 활용한 효율적인 여행 계획 수립 시스템을 제공합니다. 예산과 일정에 맞는 여행 계획을 세워 보세요.</p>
+                    <a href="/projects/2" class="details-btn">더 알아보기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .projects-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .projects-header h1 {
+        font-size: 2.5em;
+        color: #333;
+    }
+
+    .projects-header p {
+        font-size: 1.2em;
+        color: #666;
+    }
+
+    .projects-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .project-card {
+        width: 16em;
+        height: 22em;
+        perspective: 1000px; /* 3D 효과 */
+    }
+
+    .card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transition: transform 0.6s;
+    }
+
+    .project-card:hover .card-inner {
+        transform: rotateY(180deg); /* 카드 뒤집기 */
+    }
+
+    .card-front,
+    .card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-front {
+        background: #f9f9f9;
+    }
+
+    .card-front img {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 15px;
+    }
+
+    .card-back {
+        background: #333;
+        color: #fff;
+        transform: rotateY(180deg);
+    }
+
+    .card-front h2, .card-back h2 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+
+    .card-front p, .card-back p {
+        font-size: 1em;
+        line-height: 1.6;
+    }
+
+    .details-btn {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background: #ffd700;
+        color: #333;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 4px;
+    }
+
+    .details-btn:hover {
+        background: #ffcc00;
+}
+
+</style>
+{% endblock %}
