@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}여행에서의 윤리적 소비 - 홈{% endblock %}
+
+{% block content %}
+<div class="main-content" style="position: relative; height: calc(100vh - 60px); background: url('{{ url_for('static', filename='images/travel_background.jpg') }}') no-repeat center center fixed; background-size: cover; display: flex; justify-content: center; align-items: center;">
+    <div class="overlay" style="background: rgba(0, 0, 0, 0.7); padding: 3em; border-radius: 8px; text-align: center; color: #fff;">
+        <h1 style="font-size: 2.5em; margin-bottom: 20px; color: #fff; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);">여행에서의 윤리적 소비</h1>
+        <p style="font-size: 1.2em; line-height: 1.6; margin-bottom: 20px;">안녕하세요!<br>
+        서울여자대학교 바롬종합설계프로젝트 09분반 3팀 <strong>‘여행갈때생각해조’</strong>입니다.</p>
+        <p style="font-size: 1.2em; line-height: 1.6; margin-bottom: 20px;">저희는 윤리적 소비의 개념과 이점에 대해 알리고,<br>
+        공정한 관광 구조를 형성하는 데 기여하기 위해 프로젝트를 진행 중입니다.</p>
+        <p style="font-size: 1.2em; line-height: 1.6; margin-bottom: 20px;">저희 <a href="https://www.instagram.com/when.u.trip" target="_blank" style="color: #ffd700; font-weight: bold; text-decoration: none;">인스타그램 @when.u.trip</a>에서<br>
+        더 다양한 정보를 확인해 보세요!</p>
+    </div>
+</div>
+{% endblock %}

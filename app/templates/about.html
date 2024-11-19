@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block title %}여행에서의 윤리적 소비 - 소개{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="team-info">
+        <h2>팀 구성원 및 역할</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>이름</th>
+                    <th>전공</th>
+                    <th>역할</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>이채원</strong></td>
+                    <td>첨단미디어디자인전공 22학번</td>
+                    <td><strong>팀장</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>최아연</strong></td>
+                    <td>식품공학전공 22학번</td>
+                    <td>주간 팀 활동일지</td>
+                </tr>
+                <tr>
+                    <td><strong>한채원</strong></td>
+                    <td>데이터사이언스학과 21학번</td>
+                    <td>활동지원금 담당자</td>
+                </tr>
+                <tr>
+                    <td><strong>김현지</strong></td>
+                    <td>시각디자인전공 22학번</td>
+                    <td>프로젝트 계획서</td>
+                </tr>
+                <tr>
+                    <td><strong>엄지원</strong></td>
+                    <td>현대미술전공 22학번</td>
+                    <td>중간 발표 자료</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    .team-info {
+        margin: 20px auto;
+        max-width: 800px;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .team-info h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    /* 테이블 스타일링 */
+    table {
+        width: 100%;
+        border-collapse: collapse; /* 중복된 선 제거 */
+        margin-bottom: 20px;
+        font-size: 1em; /* 글자 크기 조정 */
+        text-align: left; /* 텍스트 정렬 */
+    }
+
+    th, td {
+        border: 1px solid #ddd; /* 셀 경계 */
+        padding: 10px; /* 셀 안쪽 여백 */
+    }
+
+    th {
+        background: #f4f4f4; /* 헤더 배경색 */
+        font-weight: bold;
+        text-align: center;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9; /* 짝수 행 배경색 */
+    }
+
+    tr:hover {
+        background-color: #f1f1f1; /* 마우스 오버 시 배경색 */
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center; /* 모든 열 중앙 정렬 */
+        vertical-align: middle; /* 텍스트 수직 정렬 */
+    }
+</style>
+{% endblock %}
