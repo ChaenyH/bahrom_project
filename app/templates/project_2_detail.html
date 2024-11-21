@@ -2,8 +2,12 @@
 
 {% block title %}여행 계획 및 예산 관리{% endblock %}
 
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/project_2_style.css') }}">
+{% endblock %}
+
 {% block content %}
-<div class="container">
+<div class="parent-container">
     <!-- 페이지 헤더 -->
     <div class="project-header">
         <h1>여행 계획 및 예산 관리</h1>
@@ -63,10 +67,12 @@
 </div>
 {% endblock %}
 
-{% block styles %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/project_2_style.css') }}">
-{% endblock %}
-
 {% block scripts %}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // JS 코드가 DOM 로드 이후 실행되도록 보장
+        console.log("DOM fully loaded and parsed");
+    });
+</script>
 <script src="{{ url_for('static', filename='js/project_2_script.js') }}"></script>
 {% endblock %}

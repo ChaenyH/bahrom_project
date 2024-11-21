@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>여행 가계부</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/budget.css') }}">
+</head>
+<body>
+    <header>
+        <h1>여행 가계부</h1>
+    </header>
+
+    <main>
+        <!-- 여행 정보 입력 -->
+        <section>
+            <h2>여행 정보 입력</h2>
+            <form method="POST" action="/budget">
+                <label for="travel_location">여행지:</label>
+                <input type="text" id="travel_location" name="travel_location" required>
+                
+                <label for="budget">총 예산:</label>
+                <input type="number" id="budget" name="budget" required>
+
+                <button type="submit">저장</button>
+            </form>
+        </section>
+
+        <!-- 소비 기록 -->
+        <section>
+            <h2>소비 기록</h2>
+            <section>
+                <h2>영수증 업로드</h2>
+                <form method="POST" action="/upload_receipt" enctype="multipart/form-data">
+                    <input type="file" name="file" accept="image/*">
+                    <button type="submit">업로드</button>
+                </form>
+            </section>            
+            <form method="POST" action="/budget">
+                <label for="date">날짜:</label>
+                <input type="date" id="date" name="date">
+        
+                <label for="category">카테고리:</label>
+                <select id="category" name="category">
+                    <option value="식비">식비</option>
+                    <option value="교통">교통</option>
+                    <option value="쇼핑">쇼핑</option>
+                    <option value="기타">기타</option>
+                </select>
+        
+                <label for="amount">금액:</label>
+                <input type="number" id="amount" name="amount" required>
+        
+                <label for="memo">메모:</label>
+                <input type="text" id="memo" name="memo">
+        
+                <button type="submit">추가</button>
+            </form>
+        
+            <table>
+                <thead>
+                    <tr>
+                        <th>날짜</th>
+                        <th>카테고리</th>
+                        <th>금액</th>
+                        <th>메모</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for expense in expenses %}
+                    <tr>
+                        <td>{{ expense.date }}</td>
+                        <td>{{ expense.category }}</td>
+                        <td>{{ "{:,.0f}".format(expense.amount) }}원</td>
+                        <td>{{ expense.memo }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+        
+        <!-- 남은 예산 -->
+        <section>
+            <h2>예산 현황</h2>
+            <p>총 예산: 1,000,000원</p>
+            <p>현재 지출: {{ "{:,.0f}".format(total_spent) }}원</p>
+            <p>남은 예산: {{ "{:,.0f}".format(remaining_budget) }}원</p>
+        
+            <div style="border: 1px solid #ddd; border-radius: 5px; overflow: hidden;">
+                <div style="width: {{ (total_spent / 1000000) * 100 }}%; background-color: #4CAF93; height: 20px;"></div>
+            </div>
+        </section>        
+    </main>
+
+    <script src="{{ url_for('static', filename='js/budget.js') }}"></script>
+</body>
+</html>
