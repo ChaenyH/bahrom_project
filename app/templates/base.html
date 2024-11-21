@@ -1,95 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="여행에서 윤리적 소비를 실천하며 공정한 관광 구조를 형성하세요.">
+    <meta property="og:title" content="여행에서의 윤리적 소비">
+    <meta property="og:description" content="윤리적 소비와 지속 가능한 여행을 위한 프로젝트를 확인해 보세요.">
+    <meta property="og:image" content="{{ url_for('static', filename='images/logo.png') }}">
+    <meta property="og:url" content="{{ request.url }}">
+    <meta name="twitter:card" content="summary_large_image">
     <title>{% block title %}여행에서의 윤리적 소비{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <style>
-        /* 전체 레이아웃 및 헤더 스타일 */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo a {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
-
-        .logo img {
-            width: 30px;
-            height: 30px;
-            margin-right: 10px;
-        }
-
-        .logo span {
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .nav {
-            display: flex;
-            gap: 15px;
-        }
-
-        .nav a {
-            text-decoration: none;
-            color: #555;
-            font-weight: bold;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-
-        .nav a:hover {
-            background-color: #f0f0f0;
-            color: #000;
-        }
-    </style>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/logo.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=1">
+    {% block styles %}{% endblock %}
 </head>
 <body>
-    <!-- 상단바 -->
     <div class="header">
         <div class="logo">
-            <!-- 로고와 프로젝트명을 홈 링크로 연결 -->
             <a href="/">
                 <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
                 <span>여행에서의 윤리적 소비</span>
             </a>
         </div>
-        <div class="nav">
-            <!-- "홈" 메뉴 제거, 다른 메뉴만 유지 -->
-            <a href="/about">소개</a>
-            <a href="/projects">프로젝트</a>
-        </div>
+        <nav class="nav">
+            <a class="nav-link" href="/about">소개</a>
+            <a class="nav-link" href="/projects">프로젝트</a>
+        </nav>
     </div>
-
-    <!-- 메인 컨텐츠 -->
-    <div>
+    <div class="container">
         {% block content %}
-        <!-- 개별 페이지 내용 삽입 -->
         {% endblock %}
     </div>
+    {% block scripts %}{% endblock %}
 </body>
 </html>

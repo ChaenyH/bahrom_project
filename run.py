@@ -2,13 +2,13 @@ from app import create_app, db
 
 app = create_app()
 
-# 데이터베이스 생성 명령
-@app.cli.command('create-db')
-def create_db():
-    """Create the database."""
-    db.create_all()
-    print("Database created!")
+with app.app_context():
+    db.create_all()  # 데이터베이스 테이블 생성
 
-if __name__ == '__main__':
-    # host와 port를 명시적으로 설정
+# 디버깅용: 등록된 라우트 출력
+print("Registered Routes:")
+for rule in app.url_map.iter_rules():
+    print(rule)
+
+if __name__ == "__main__":
     app.run(host="127.0.0.1", port=8080, debug=True)
