@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()  # SQLAlchemy 인스턴스 생성
 
 def create_app():
-    app = Flask(__name__)
+    app = Flask(__name__, static_folder='static')
     app.config.from_object('config')
 
     db.init_app(app)  # Flask 앱에 데이터베이스 초기화
