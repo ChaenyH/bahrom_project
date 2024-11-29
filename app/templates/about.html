@@ -45,53 +45,56 @@
 
 <style>
     .team-info {
-        max-width: 800px;
-        background: #fff;
+        max-width: 90%;
+        background: var(--color-white);
         padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        margin: 0 auto; /* 수평 가운데 정렬 */
+        border-radius: 10px;
+        /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); */
+        margin: 20px auto;
+        overflow-x: auto;
     }
 
     .team-info h2 {
         text-align: center;
         margin-bottom: 20px;
-        color: #333;
+        color: var(--color-darker-navy);
+        font-size: 1.5em;
     }
 
-    /* 테이블 스타일링 */
     table {
         width: 100%;
-        border-collapse: collapse; /* 중복된 선 제거 */
+        border-collapse: collapse;
         margin-bottom: 20px;
-        font-size: 1em; /* 글자 크기 조정 */
-        text-align: left; /* 텍스트 정렬 */
+        font-size: 0.9em;
+        text-align: left;
+        color: var(--color-darkest-navy);
     }
 
     th, td {
-        border: 1px solid #ddd; /* 셀 경계 */
-        padding: 10px; /* 셀 안쪽 여백 */
-    }
-
-    th {
-        background: #f4f4f4; /* 헤더 배경색 */
-        font-weight: bold;
+        border: 1px solid var(--color-light-skyblue);
+        padding: 12px;
         text-align: center;
     }
 
-    tr:nth-child(even) {
-        background-color: #f9f9f9; /* 짝수 행 배경색 */
+    th {
+        background: var(--color-skyblue);
+        color: #fff;
+        font-weight: bold;
     }
 
     tr:hover {
-        background-color: #f1f1f1; /* 마우스 오버 시 배경색 */
+        background-color: var(--color-apricot);
+        color: var(--color-darker-navy);
     }
 
-    th, td {
-        border: 1px solid #ddd;
-        padding: 10px;
-        text-align: center; /* 모든 열 중앙 정렬 */
-        vertical-align: middle; /* 텍스트 수직 정렬 */
+    @media (min-width: 768px) {
+        .team-info {
+            max-width: 800px;
+        }
+
+        table {
+            font-size: 1em;
+        }
     }
 </style>
 {% endblock %}
