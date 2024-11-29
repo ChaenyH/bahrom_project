@@ -2,16 +2,49 @@
 
 {% block title %}여행에서의 윤리적 소비 - 홈{% endblock %}
 
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index_style.css') }}">
+{% endblock %}
+
 {% block content %}
-<div class="main-content" style="position: relative; height: calc(100vh - 60px); background: url('{{ url_for('static', filename='images/travel_background.jpg') }}') no-repeat center center fixed; background-size: cover; display: flex; justify-content: center; align-items: center;">
-    <div class="overlay" style="background: rgba(0, 0, 0, 0.7); padding: 3em; border-radius: 8px; text-align: center; color: #fff;">
-        <h1 style="font-size: 2.5em; margin-bottom: 20px; color: #fff; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);">여행에서의 윤리적 소비</h1>
-        <p style="font-size: 1.2em; line-height: 1.6; margin-bottom: 20px; color: #fff;">안녕하세요!<br>
-        서울여자대학교 바롬종합설계프로젝트 09분반 3팀 <strong>‘여행갈때생각해조’</strong>입니다.</p>
-        <p style="font-size: 1.2em; line-height: 1.6; margin-bottom: 20px; color: #fff;">저희는 윤리적 소비의 개념과 이점에 대해 알리고,<br>
-        공정한 관광 구조를 형성하는 데 기여하기 위해 프로젝트를 진행 중입니다.</p>
-        <p style="font-size: 1.2em; line-height: 1.6; margin-bottom: 20px; color: #fff;">저희 <a href="https://www.instagram.com/when.u.trip" target="_blank" style="color: #ffd700; font-weight: bold; text-decoration: none;">인스타그램 @when.u.trip</a>에서<br>
-        더 다양한 정보를 확인해 보세요!</p>
+<div class="intro-section" id="intro">
+    <div class="text-content">
+        <h1>여행갈때<br>생각해조</h1>
+        <p>서울여자대학교 바롬종합설계프로젝트 09분반 <br>3팀 <strong>‘여행갈때생각해조’</strong>입니다.</p>
+        <p>저희는 윤리적 소비의 개념과 이점에 대해 알리고,<br>
+            공정한 관광 구조를 형성하는 데 기여하기 위해 <br>프로젝트를 진행 중입니다.</p>
+    </div>
+    <div class="intro-image">
+        <img src="{{ url_for('static', filename='images/bunny/bunny_heart.png') }}" alt="메인 이미지">
+    </div>
+    <div class="instagram-link">
+        <a href="https://www.instagram.com/when.u.trip" target="_b  lank">
+            <img src="{{ url_for('static', filename='images/instagram_icon.png') }}" alt="인스타그램 로고">
+            WHEN.U.TRIP ↗︎
+        </a>
+    </div>
+</div>
+
+<div class="intro-card">
+    <div style="flex: 0.7; margin: auto 0 auto 20px;">
+        <img src="{{ url_for('static', filename='images/bunny/bunny_question.png') }}" alt="윤리적 소비 이미지">
+    </div>
+    <div class="intro-card-text">
+        <h3>윤리적 소비란?</h3>
+        <p>윤리적 소비란 소비자가 제품이나 서비스를 구매할 때, 단순히 가격과 품질만을 고려하는 것이 아니라 <strong>사회적, 환경적, 윤리적 가치를 중요하게 여기는 소비 행위</strong>를 말합니다.</p>
+        <p>즉, 자신의 소비 선택이 환경 보호, 사회적 정의, 노동자 권리 보호, 동물 복지 등에 긍정적인 영향을 미치도록 신중하게 결정하는 것을 의미합니다.</p>
+    </div>
+</div>
+
+<div class="intro-card">
+    <div class="intro-card-text">
+        <h3>바롬종합설계프로젝트란?</h3>
+        <p>바롬종합설계프로젝트는 총 15주간의 TPBL 방식의 수업으로, 세계적 관점에서 사회문제를 바라보며 창의적 해결을 도모하는 프로그램입니다.</p>    
+    </div>
+    <div class="bahrom-logo">
+        <img src="{{ url_for('static', filename='images/swu/swu_sub_logo.png') }}" alt="서울여대 서브 로고">
+        <img src="{{ url_for('static', filename='images/swu/bahrom_logo.png') }}" alt="바롬 프로젝트 로고">
+        <a href="https://bahrom.swu.ac.kr/skin/page/about11.html" class="more-info">더 알아보기 ↗︎</a>
     </div>
 </div>
 {% endblock %}
