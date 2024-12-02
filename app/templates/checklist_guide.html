@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+
+{% block title %}윤리적 소비 체크리스트{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="intro-header">
+        <h1>윤리적 소비 체크리스트</h1>
+        <p>여행 중 소비 결정을 더 신중하고 책임감 있게 내려보아요!</p>
+    </div>
+
+    <section class="question-section">
+        <div class="question">
+            <h2>1. 꼭 필요한 소비인가요?</h2>
+            <p>불필요한 소비를 줄이면 자원을 절약하고 환경 파괴를 막을 수 있습니다.</p>
+            <ul>
+                <li>✔︎ 구매 전에 "이 제품이 없으면 안 되는 이유"를 생각해 보기</li>
+                <li>✔︎ 구매 전 24시간 동안 고민해 보기</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h2>2. 계획적인 소비인가요?</h2>
+            <p>계획적인 소비는 재정 낭비를 막고, 필요한 소비에만 집중할 수 있습니다.</p>
+            <ul>
+                <li>✔︎ 월간/주간 예산 계획 세우기</li>
+                <li>✔︎ 필요한 항목을 미리 리스트로 작성하기</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h2>3. 환경을 해치지 않는 소비인가요?</h2>
+            <p>환경을 고려한 소비는 탄소 발자국을 줄이고 지구 생태계를 보호합니다.</p>
+            <ul>
+                <li>✔︎ 친환경 인증 마크 확인 (FSC, 에코라벨 등)</li>
+                <li>✔︎ 재활용 가능하거나 생분해되는 제품 선택</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h2>4. 이 소비로 인해 부당한 이익이 발생하지는 않나요?</h2>
+            <p>윤리적 소비는 공정성과 정의를 지향합니다.</p>
+            <ul>
+                <li>✔︎ 공정무역 제품 구매</li>
+                <li>✔︎ 윤리적 기업의 제품 구매</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h2>5. 해당 지역의 로컬 가게나 친환경 가게도 찾아보셨나요?</h2>
+            <p>로컬 소비는 지역 경제를 활성화하고, 탄소 배출을 줄이는 데 기여합니다.</p>
+            <ul>
+                <li>✔︎ 지역 농산물 직거래 장터 방문</li>
+                <li>✔︎ 로컬 브랜드 제품 우선 구매</li>
+            </ul>
+        </div>
+    </section>
+</div>
+
+<style>
+    /* 메인 콘텐츠 */
+    .main-content {
+        padding: 20px;
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .intro-header {
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: var(--color-skyblue);
+        color: var(--color-white); /* 흰색 텍스트 */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* 텍스트 그림자 */
+        border-radius: 8px; /* 둥근 모서리 */
+    }
+
+    .question-section {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* 질문 카드 */
+    .question {
+        background-color: var(--color-white); /* 카드 배경 흰색 */
+        color: var(--color-darkest-navy); /* 텍스트 색상 */
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        border: 1px solid var(--color-bluegrey); /* 카드 외곽선 */
+        text-align: center;
+    }
+
+    .question h2 {
+        font-size: 1.4em;
+        color: var(--color-dark-navy); /* 제목 색상 */
+        margin-bottom: 10px;
+    }
+
+    .question p {
+        margin-bottom: 10px;
+        color: var(--color-darker-bluegrey); /* 부가 텍스트 색상 */
+    }
+
+    .question ul {
+        margin-top: 10px;
+        padding-left: 20px;
+        list-style-type: none;
+    }
+
+    .question li {
+        margin-bottom: 5px;
+        color: var(--color-darkest-bluegrey); /* 리스트 색상 */
+    }
+
+    /* 링크 스타일 */
+    a {
+        text-decoration: none;
+        color: var(--color-dark-navy); /* 기본 링크 색상 */
+    }
+
+    a:hover {
+        color: var(--color-skyblue); /* 호버 시 밝은 파란색 */
+    }
+
+    /* 반응형 스타일 */
+    @media (max-width: 768px) {
+        .header h1 {
+            font-size: 1.5em;
+        }
+
+        .question {
+            padding: 10px;
+        }
+
+        .question h2 {
+            font-size: 1.2em;
+        }
+    }
+</style>
+{% endblock %}
