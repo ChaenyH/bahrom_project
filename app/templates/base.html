@@ -24,13 +24,32 @@
             </a>
         </div>
         <nav class="nav">
-            <a class="nav-link" href="/about">소개</a>
-            <a class="nav-link" href="/projects">프로젝트</a>
+            <a class="nav-link" href="/about">팀 소개</a>
+            <div class="nav-link dropdown">
+                <a class="dropdown-toggle" href="#">가이드</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/checklist-guide">체크리스트 가이드</a>
+                    <a class="dropdown-item" href="/ethical-consumption">윤리적 소비 실천 방안</a>
+                </div>
+            </div>
+            <a class="nav-link" href="/budget">가계부</a>
         </nav>
     </div>
-    <div class="container">
+    <div class="base-container">
         {% block content %}{% endblock %}
     </div>
-    {% block scripts %}{% endblock %}
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="https://www.youtube.com/user/seoulwomensuniv" target="_blank">서울여대 유튜브</a>
+            <a href="https://bahrom.swu.ac.kr/" target="_blank">바롬인성교육부</a>
+            <a href="https://instagram.com/when.u.trip" target="_blank">팀 인스타그램</a>
+        </div>
+        <div class="footer-info">
+            <p>서울여자대학교 2024년 2학기 바롬종합설계프로젝트 09분반 "여행갈때생각해조"</p>
+            <p>01797 서울시 노원구 화랑로 621 서울여자대학교</p>
+            <p>Copyright © 2024 SWU "When U Trip"</p>
+        </div>
+    </footer>
+        {% block scripts %}{% endblock %}
 </body>
 </html>

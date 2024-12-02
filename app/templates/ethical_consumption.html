@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+
+{% block title %}윤리적 소비 실천 방안{% endblock %}
+
+{% block content %}
+<main class="ethical-page">
+    <header class="page-header">
+        <h1>윤리적 소비 실천 방안</h1>
+        <p>작은 변화가 세상을 바꿉니다. 지금부터 윤리적 소비를 실천해보세요!</p>
+    </header>
+
+    <!-- 불매운동 -->
+    <section class="ethics-section">
+        <h2>1. 불매운동</h2>
+        <p>환경 오염, 인권 침해, 비윤리적 경영 등 부정적인 평판이 있는 기업의 제품을 구매하지 않는 행동입니다.</p>
+        <ul>
+            <li><strong>목적:</strong> 부정적인 행태를 개선하도록 기업에 압력을 가하고, 윤리적 경영을 촉진.</li>
+            <li><strong>예시:</strong>
+                <ul>
+                    <li>아동 노동 착취와 관련된 의류 브랜드 불매.</li>
+                    <li>환경 파괴적 채굴로 유명한 기업 제품 불매.</li>
+                    <li>동물 실험을 지속하는 화장품 브랜드 거부.</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <!-- 긍정적 기업 구매 -->
+    <section class="ethics-section">
+        <h2>2. 긍정적 기업 구매</h2>
+        <p>윤리적이고 지속 가능한 경영을 실천하는 기업의 제품을 선택합니다.</p>
+        <ul>
+            <li><strong>목적:</strong> 공정무역, 유기농, 친환경 제품 구매로 긍정적인 기업 활동을 지원.</li>
+            <li><strong>예시:</strong>
+                <ul>
+                    <li>공정무역(Fair Trade) 인증 제품: 커피, 초콜릿.</li>
+                    <li>친환경 세제, 리필 가능한 화장품 구매.</li>
+                    <li>비건 패션: 동물 착취를 줄이는 소재로 만든 의류.</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <!-- 로컬 소비 -->
+    <section class="ethics-section">
+        <h2>3. 로컬 소비</h2>
+        <p>지역에서 생산된 농산물이나 제품을 직접 구매하여 지역 경제와 환경을 동시에 고려합니다.</p>
+        <ul>
+            <li><strong>목적:</strong> 탄소 배출 감소, 생산자와의 신뢰 형성.</li>
+            <li><strong>예시:</strong>
+                <ul>
+                    <li>농수산물 직거래 장터 이용.</li>
+                    <li>지역 소상공인과 협력하는 기업의 제품 구매.</li>
+                    <li>수입 제품 대신 로컬 브랜드 선호.</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <!-- 충분한 검증 후 구매 -->
+    <section class="ethics-section">
+        <h2>4. 충분한 검증 후 구매</h2>
+        <p>제품을 구매하기 전에 생산 과정, 원산지, 인증 등을 비교하고 분석합니다.</p>
+        <ul>
+            <li><strong>목적:</strong> 윤리적 소비 실천에 부합하는 제품 선택.</li>
+            <li><strong>예시:</strong>
+                <ul>
+                    <li>에너지 등급이 높은 전자제품 구매.</li>
+                    <li>환경 인증 마크 확인 (예: FSC, 에코라벨).</li>
+                    <li>사회적 기업의 제품 구매.</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <!-- 반소비 / 지속가능한 소비 -->
+    <section class="ethics-section">
+        <h2>5. 반소비 / 지속가능한 소비</h2>
+        <p>필요 이상의 소비를 줄이고, 오래 사용할 수 있는 제품을 선택하거나 재사용 가능한 제품을 활용합니다.</p>
+        <ul>
+            <li><strong>목적:</strong> 자원 낭비를 줄이고 환경을 보호.</li>
+            <li><strong>예시:</strong>
+                <ul>
+                    <li>중고 제품 구매 (의류, 가전 등).</li>
+                    <li>다회용 컵, 빨대, 장바구니 사용.</li>
+                    <li>수리 가능한 제품 우선 구매.</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+</main>
+<style>
+    /* 메인 콘텐츠 */
+    .ethical-page {
+        padding: 20px;
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .page-header {
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: var(--color-skyblue); /* 하늘색 배경 */
+        color: var(--color-white); /* 흰색 텍스트 */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* 텍스트 그림자 */
+        border-radius: 8px; /* 둥근 모서리 */
+    }
+
+    /* 섹션 스타일 */
+    .ethics-section {
+        background-color: var(--color-white); /* 섹션 배경 흰색 */
+        color: var(--color-darkest-navy); /* 텍스트 색상 */
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 8px; /* 둥근 모서리 */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+        border: 1px solid var(--color-bluegrey); /* 섹션 외곽선 */
+        text-align: left;
+    }
+
+    /* 제목과 본문 */
+    .ethics-section h2 {
+        font-size: 1.6em;
+        color: var(--color-dark-navy); /* 제목 색상 */
+        margin-bottom: 10px;
+    }
+
+    .ethics-section p {
+        font-size: 1.1em;
+        color: var(--color-darker-bluegrey); /* 본문 텍스트 색상 */
+        margin-bottom: 15px;
+        line-height: 1.6; /* 줄 간격 */
+    }
+
+    /* 리스트 스타일 */
+    .ethics-section ul {
+        margin-top: 10px;
+        padding-left: 20px;
+        list-style-type: disc;
+    }
+
+    .ethics-section li {
+        margin-bottom: 8px;
+        color: var(--color-darkest-bluegrey); /* 리스트 텍스트 색상 */
+        line-height: 1.5; /* 줄 간격 */
+    }
+
+    /* 하위 리스트 */
+    .ethics-section li ul {
+        margin-top: 5px;
+        padding-left: 20px;
+        list-style-type: circle; /* 하위 리스트 스타일 */
+    }
+
+    .ethics-section li ul li {
+        color: var(--color-darker-bluegrey); /* 하위 리스트 색상 */
+    }
+
+    /* 링크 스타일 */
+    a {
+        text-decoration: none;
+        color: var(--color-dark-navy); /* 링크 기본 색상 */
+        font-weight: bold;
+    }
+
+    a:hover {
+        color: var(--color-skyblue); /* 호버 시 밝은 파란색 */
+    }
+
+    /* 반응형 스타일 */
+    @media (max-width: 768px) {
+        .page-header {
+            padding: 15px;
+        }
+
+        .page-header h1 {
+            font-size: 1.8em; /* 제목 크기 축소 */
+        }
+
+        .ethics-section {
+            padding: 15px;
+        }
+
+        .ethics-section h2 {
+            font-size: 1.4em; /* 섹션 제목 크기 축소 */
+        }
+
+        .ethics-section p {
+            font-size: 1em; /* 본문 크기 축소 */
+        }
+    }
+</style>
+{% endblock %}

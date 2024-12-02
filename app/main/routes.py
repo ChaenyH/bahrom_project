@@ -32,6 +32,15 @@ def project_detail(project_id):
         return render_template('404.html'), 404
     return render_template(project_info["template"], project={"id": project_id, "title": project_info["title"]})
 
+@main.route('/checklist-guide')
+def checklist_guide():
+    return render_template('checklist_guide.html')
+
+@main.route('/ethical-consumption')
+def ethical_consumption():
+    return render_template('ethical_consumption.html')
+
+
 @main.route('/budget', methods=["GET", "POST"])
 def budget():
     if request.method == "POST":

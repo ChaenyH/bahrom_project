@@ -17,7 +17,7 @@
     --color-darkest-apricot: #8b765d;
 }
 
-/* 기본적인 body 스타일 */
+/* 기본 스타일 */
 body {
     font-family: 'Arial', sans-serif;
     color: var(--color-darkest-navy);
@@ -33,8 +33,8 @@ body {
     align-items: center;
     padding: 20px 30px;
     background-color: var(--color-white);
-    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
-    position: sticky; /* 상단 고정 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
     top: 0;
     z-index: 1000;
 }
@@ -58,24 +58,127 @@ body {
 
 .logo span {
     font-size: 1.2em;
+    letter-spacing: -0.5px;
     font-weight: bold;
     color: var(--color-darkest-navy);
 }
 
+/* 네비게이션 스타일 */
 .nav {
     display: flex;
     gap: 15px;
 }
 
-.nav-link {
+.nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
     color: var(--color-darkest-navy);
     font-weight: bold;
-    padding: 5px 10px;
+    padding: 10px 15px;
     border-radius: 5px;
+    position: relative;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.nav-link:hover {
-    background-color: var(--color-light-bluegrey);
+.nav a:hover,
+.nav a:focus {
+    background-color: var(--color-light-skyblue);
+    color: var(--color-dark-navy);
+}
+
+/* 드롭다운 메뉴 스타일 */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-bluegrey);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 10px 0;
+    width: 200px;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    right: 0;
+    left: auto;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 1em;
     color: var(--color-darkest-navy);
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.dropdown-item:hover {
+    background-color: var(--color-light-skyblue);
+    color: var(--color-dark-navy);
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+    .header {
+        padding: 20px 15px;
+    }
+
+    .logo span {
+        font-size: 1.1em;
+    }
+
+    .nav {
+        gap: 5px;
+    }
+
+    .nav a {
+        font-size: 0.9em;
+    }
+}
+
+/* 풋터 스타일 */
+.footer {
+    background-color: var(--color-bluegrey);
+    padding: 20px;
+    margin-top: 80px;
+    text-align: center;
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+.footer-links {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.footer-links a {
+    color: var(--color-dark-bluegrey);
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: -0.5px;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--color-darkest-bluegrey);
+}
+
+.footer-info p {
+    margin: 5px 0;
+    font-size: 0.9em;
+    letter-spacing: -0.5px;
+    color: var(--color-darker-bluegrey);
 }
