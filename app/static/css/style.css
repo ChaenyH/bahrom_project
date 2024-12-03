@@ -33,10 +33,11 @@ body {
     align-items: center;
     padding: 20px 30px;
     background-color: var(--color-white);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1); */
     position: sticky;
     top: 0;
     z-index: 1000;
+    border-bottom: 0.5px solid var(--color-bluegrey);
 }
 
 .logo {
@@ -61,6 +62,17 @@ body {
     letter-spacing: -0.5px;
     font-weight: bold;
     color: var(--color-darkest-navy);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* 텍스트 그림자 */
+}
+
+/* 화면이 769px 이상일 때 (데스크톱 환경) */
+@media (min-width: 769px) {
+    .desktop-title {
+        display: block; /* 데스크톱용 제목 표시 */
+    }
+    .mobile-title {
+        display: none; /* 모바일용 제목 숨김 */
+    }
 }
 
 /* 네비게이션 스타일 */
@@ -104,7 +116,7 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     padding: 10px 0;
-    width: 200px;
+    width: 150px;
 }
 
 .dropdown:hover .dropdown-menu {
@@ -128,8 +140,15 @@ body {
     color: var(--color-dark-navy);
 }
 
-/* 반응형 스타일 */
+/* 화면이 768px 이하일 때 (모바일 환경) */
 @media (max-width: 768px) {
+    .desktop-title {
+        display: none; /* 데스크톱용 제목 숨김 */
+    }
+    .mobile-title {
+        display: block; /* 모바일용 제목 표시 */
+    }
+
     .header {
         padding: 20px 15px;
     }
@@ -144,6 +163,7 @@ body {
 
     .nav a {
         font-size: 0.9em;
+        padding: 5px 10px;
     }
 }
 

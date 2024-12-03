@@ -1,8 +1,3 @@
-### HTML 렌더링
-# 사용자 인터페이스(UI)와 관련된 HTML 렌더링 처리.
-# /register와 /login은 폼 데이터를 처리하고, 성공 시 적절한 페이지로 리다이렉션합니다.
-# 폼 데이터 유효성 검사 및 에러 처리를 HTML 렌더링과 통합합니다.
-# ---
 from flask import Blueprint, render_template, request, redirect, url_for
 from .models import Expense, db
 from datetime import datetime
@@ -24,13 +19,6 @@ def about():
 @main.route('/projects')
 def projects():
     return render_template('projects.html')
-
-@main.route('/projects/<int:project_id>')
-def project_detail(project_id):
-    project_info = project_templates.get(project_id)
-    if not project_info:
-        return render_template('404.html'), 404
-    return render_template(project_info["template"], project={"id": project_id, "title": project_info["title"]})
 
 @main.route('/checklist-guide')
 def checklist_guide():
