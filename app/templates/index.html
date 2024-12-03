@@ -8,7 +8,7 @@
 
 {% block content %}
 <div class="intro-section">
-    <div class="text-content">
+    <div class="intro-text-section">
         <h1 class="desktop-title">여행갈때<br>생각해조</h1>
         <h1 class="mobile-title">여행갈때생각해조</h1>
         <p>서울여자대학교 바롬종합설계프로젝트 09분반 <br>3팀 <strong>‘여행갈때생각해조’</strong>입니다.</p>
@@ -50,12 +50,12 @@
 </div>
 
 <style>
-    .text-content h1,
+    .intro-text-section h1,
     .intro-card h3 {
         color: var(--color-darkest-navy);
     }
 
-    .text-content p,
+    .intro-text-section p,
     .intro-card p {
         color: var(--color-darker-bluegrey);
         line-height: 1.5em;
@@ -69,7 +69,7 @@
         border-bottom: 0.5px solid var(--color-bluegrey);
     }
 
-    .text-content {
+    .intro-text-section {
         flex: 1;
         margin-right: 20px;
     }
@@ -127,6 +127,7 @@
     }
 
     .intro-card img {
+        display: block;
         width: 30%;
         padding: 0 20px;
     }

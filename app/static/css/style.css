@@ -33,7 +33,6 @@ body {
     align-items: center;
     padding: 20px 30px;
     background-color: var(--color-white);
-    /* box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1); */
     position: sticky;
     top: 0;
     z-index: 1000;
