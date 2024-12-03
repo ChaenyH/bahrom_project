@@ -7,9 +7,10 @@
 {% endblock %}
 
 {% block content %}
-<div class="intro-section" id="intro">
+<div class="intro-section">
     <div class="text-content">
-        <h1>여행갈때<br>생각해조</h1>
+        <h1 class="desktop-title">여행갈때<br>생각해조</h1>
+        <h1 class="mobile-title">여행갈때생각해조</h1>
         <p>서울여자대학교 바롬종합설계프로젝트 09분반 <br>3팀 <strong>‘여행갈때생각해조’</strong>입니다.</p>
         <p>저희는 윤리적 소비의 개념과 이점에 대해 알리고,<br>
             공정한 관광 구조를 형성하는 데 기여하기 위해 <br>프로젝트를 진행 중입니다.</p>
@@ -17,18 +18,17 @@
     <div class="intro-image">
         <img src="{{ url_for('static', filename='images/bunny/bunny_heart.png') }}" alt="메인 이미지">
     </div>
-    <div class="instagram-link">
-        <a href="https://www.instagram.com/when.u.trip" target="_b  lank">
-            <img src="{{ url_for('static', filename='images/instagram_icon.png') }}" alt="인스타그램 로고">
-            WHEN.U.TRIP ↗︎
-        </a>
-    </div>
 </div>
 
-<div class="intro-card">
-    <div style="flex: 0.7; margin: auto 0 auto 20px;">
-        <img src="{{ url_for('static', filename='images/bunny/bunny_question.png') }}" alt="윤리적 소비 이미지">
-    </div>
+<div class="instagram-link">
+    <a href="https://www.instagram.com/when.u.trip" target="_blank">
+        <img src="{{ url_for('static', filename='images/instagram_icon.png') }}" alt="인스타그램 로고">
+        WHEN.U.TRIP 인스타그램 바로가기 ↗
+    </a>
+</div>
+
+<div class="intro-card" id="ethical-consumption">
+    <img src="{{ url_for('static', filename='images/bunny/bunny_question.png') }}" alt="윤리적 소비 이미지">
     <div class="intro-card-text">
         <h3>윤리적 소비란?</h3>
         <p>윤리적 소비란 소비자가 제품이나 서비스를 구매할 때, 단순히 가격과 품질만을 고려하는 것이 아니라 <strong>사회적, 환경적, 윤리적 가치를 중요하게 여기는 소비 행위</strong>를 말합니다.</p>
@@ -36,15 +36,176 @@
     </div>
 </div>
 
-<div class="intro-card">
+<div class="intro-card" id="bahrom_project">
     <div class="intro-card-text">
         <h3>바롬종합설계프로젝트란?</h3>
-        <p>바롬종합설계프로젝트는 총 15주간의 TPBL 방식의 수업으로, 세계적 관점에서 사회문제를 바라보며 창의적 해결을 도모하는 프로그램입니다.</p>    
+        <p>바롬종합설계프로젝트는 총 15주간의 TPBL 방식의 수업으로, 세계적 관점에서 사회문제를 바라보며 창의적 해결을 도모하는 프로그램입니다.</p>
+        <a class="desktop-title" href="https://bahrom.swu.ac.kr/skin/page/about11.html" id="more-info">더 알아보기 ↗︎</a>
     </div>
-    <div class="bahrom-logo">
+    <div class="swu-logo-section">
         <img src="{{ url_for('static', filename='images/swu/swu_sub_logo.png') }}" alt="서울여대 서브 로고">
         <img src="{{ url_for('static', filename='images/swu/bahrom_logo.png') }}" alt="바롬 프로젝트 로고">
-        <a href="https://bahrom.swu.ac.kr/skin/page/about11.html" class="more-info">더 알아보기 ↗︎</a>
+        <a class="mobile-title" href="https://bahrom.swu.ac.kr/skin/page/about11.html" id="more-info">더 알아보기 ↗︎</a>
     </div>
 </div>
+
+<style>
+    .text-content h1,
+    .intro-card h3 {
+        color: var(--color-darkest-navy);
+    }
+
+    .text-content p,
+    .intro-card p {
+        color: var(--color-darker-bluegrey);
+        line-height: 1.5em;
+    }
+
+    /* 인트로 섹션 */
+    .intro-section {
+        display: flex;
+        padding: 80px;
+        background-color: var(--color-light-skyblue);
+        border-bottom: 0.5px solid var(--color-bluegrey);
+    }
+
+    .text-content {
+        flex: 1;
+        margin-right: 20px;
+    }
+
+    .intro-image {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+    }
+
+    .intro-image img {
+        max-width: 65%;
+        height: auto;
+    }
+
+    /* 인스타그램 링크 섹션 */
+    .instagram-link {
+        display: flex;
+        align-items: center; /* 세로 방향 중앙 정렬 */
+        justify-content: center; /* 가로 방향 중앙 정렬 */
+        padding: 30px;
+        background: var(--color-white);
+        border-bottom: 0.5px solid var(--color-bluegrey);
+    }
+
+    .instagram-link img {
+        width: 25px;
+        height: 25px;
+        margin-right: 6px;
+        vertical-align: middle; /* 아이콘을 텍스트 기준선에 정렬 */
+    }
+
+    .instagram-link a {
+        text-align: center;
+        text-decoration: none;
+        font-weight: bold;
+        color: var(--color-darkest-bluegrey)
+    }
+
+    .instagram-link a:hover {
+        color: var(--color-dark-navy)
+    }
+
+    /* 카드 스타일 */
+    .intro-card {
+        display: flex;
+        background-color: var(--color-light-bluegrey);
+        padding: 40px;
+        border-bottom: 0.5px solid var(--color-bluegrey);
+    }
+
+    .intro-card#bahrom_project {
+        background-color: var(--color-white);
+    }
+
+    .intro-card img {
+        width: 30%;
+        padding: 0 20px;
+    }
+
+    .swu-logo-section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .swu-logo-section img {
+        padding: 10px;
+    }
+
+    #more-info {
+        margin-top: 30px;
+        text-decoration: none;
+        color: var(--color-dark-navy);
+        font-weight: 600;
+        text-align: right;
+        padding-right: 20px;
+    }
+
+    #more-info:hover {
+        color: var(--color-darker-bluegrey);
+    }
+
+    /* 화면이 769px 이상일 때 (데스크톱 환경) */
+    @media (min-width: 769px) {
+        .desktop-title {
+            display: block; /* 데스크톱용 제목 표시 */
+        }
+        .mobile-title {
+            display: none; /* 모바일용 제목 숨김 */
+        }
+
+        .intro-card-text {
+            padding: 0 40px;
+        }
+    }
+
+    /* 화면이 768px 이하일 때 (모바일 환경) */
+    @media (max-width: 768px) {
+        .desktop-title {
+            display: none; /* 데스크톱용 제목 숨김 */
+        }
+        .mobile-title {
+            display: block; /* 모바일용 제목 표시 */
+        }
+
+        .intro-section {
+            flex-direction: column;
+            padding: 60px 20px;
+        }
+
+        .text-content {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .intro-card {
+            flex-direction: column;
+        }
+
+        .intro-card img {
+            width: 20%;
+        }
+
+        #more-info {
+            padding: 0px;
+        }
+
+        .swu-logo-section {
+            flex-direction: row;
+        }
+
+        .instagram-link {
+            bottom: 10px;
+            right: 20px;
+        }
+    }
+</style>
 {% endblock %}
