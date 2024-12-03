@@ -3,8 +3,10 @@
 {% block title %}여행에서의 윤리적 소비 - 소개{% endblock %}
 
 {% block content %}
-<div class="team-info">
+<div class="about-title">
     <h2>팀 구성원 및 역할</h2>
+</div>
+<div class="team-info">
     <table>
         <thead>
             <tr>
@@ -16,27 +18,42 @@
         <tbody>
             <tr>
                 <td><strong>이채원</strong></td>
-                <td>첨단미디어디자인전공 22학번</td>
+                <td>
+                    <p class="desktop-title">첨단미디어디자인전공 22학번</p>
+                    <p class="mobile-title">첨단미디어디자인전공<br>22학번</p>
+                </td>
                 <td><strong>팀장</strong></td>
             </tr>
             <tr>
                 <td><strong>최아연</strong></td>
-                <td>식품공학전공 22학번</td>
+                <td>
+                    <p class="desktop-title">식품공학전공 22학번</p>
+                    <p class="mobile-title">식품공학전공<br>22학번</p>
+                </td>
                 <td>주간 팀 활동일지</td>
             </tr>
             <tr>
                 <td><strong>한채원</strong></td>
-                <td>데이터사이언스학과 21학번</td>
+                <td>
+                    <p class="desktop-title">데이터사이언스학과 21학번</p>
+                    <p class="mobile-title">데이터사이언스학과<br>21학번</p>
+                </td>
                 <td>활동지원금 담당자</td>
             </tr>
             <tr>
                 <td><strong>김현지</strong></td>
-                <td>시각디자인전공 22학번</td>
+                <td>
+                    <p class="desktop-title">시각디자인전공 22학번</p>
+                    <p class="mobile-title">시각디자인전공<br>22학번</p>
+                </td>
                 <td>프로젝트 계획서</td>
             </tr>
             <tr>
                 <td><strong>엄지원</strong></td>
-                <td>현대미술전공 22학번</td>
+                <td>
+                    <p class="desktop-title">현대미술전공 22학번</p>
+                    <p class="mobile-title">현대미술전공<br>22학번</p>
+                </td>
                 <td>중간 발표 자료</td>
             </tr>
         </tbody>
@@ -44,42 +61,66 @@
 </div>
 
 <style>
-    .team-info {
-        max-width: 90%;
-        background: var(--color-white);
-        padding: 20px;
-        border-radius: 10px;
-        /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); */
-        margin: 20px auto;
-        overflow-x: auto;
+    /* 타이틀 */
+    .about-title {
+        color: var(--color-white);
+        background-image: url('/static/images/watercolor-galaxy-photo.jpg');
+        background-size: cover; /* 이미지가 태그 크기에 맞게 조정됨 */
+        padding: 80px 0;
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* 텍스트 그림자 추가 */
     }
 
-    .team-info h2 {
-        text-align: center;
-        margin-bottom: 20px;
-        color: var(--color-darker-navy);
-        font-size: 1.5em;
+    h2 {
+        font-size: 2.5em;
+        padding-left: 1em;
+    }
+
+    /* 팀원 정보 */
+    .team-info {
+        background: var(--color-white);
+        overflow-x: auto;
+        justify-items: center;
     }
 
     table {
-        width: 100%;
+        width: 90%;
         border-collapse: collapse;
-        margin-bottom: 20px;
         font-size: 0.9em;
-        text-align: left;
+        margin: 40px;
+        text-align: center;
         color: var(--color-darkest-navy);
     }
 
     th, td {
-        border: 1px solid var(--color-light-skyblue);
+        border: 2px solid var(--color-light-skyblue);
         padding: 12px;
         text-align: center;
     }
 
     th {
         background: var(--color-skyblue);
-        color: #fff;
+        color: var(--color-white);
         font-weight: bold;
+        font-size: 1em;
+    }
+
+    td {
+        font-size: 0.95em;
+    }
+
+    th:nth-child(1),
+    td:nth-child(1) {
+        width: 20%; /* 이름 열 너비 */
+    }
+
+    th:nth-child(2),
+    td:nth-child(2) {
+        width: 45%; /* 전공 열 너비 */
+    }
+
+    th:nth-child(3),
+    td:nth-child(3) {
+        width: 35%; /* 역할 열 너비 */
     }
 
     tr:hover {
@@ -87,13 +128,36 @@
         color: var(--color-darker-navy);
     }
 
-    @media (min-width: 768px) {
-        .team-info {
-            max-width: 800px;
+    p {
+        padding: 0;
+        margin: 10px 0;
+    }
+
+    /* 데스크탑 설정 */
+    @media (min-width: 769px) {
+        table {
+            font-size: 1em;
+            max-width: 70%;
+        }
+    }
+
+    /* 모바일 설정 */
+    @media (max-width: 768px) {
+        .about-title {
+            padding: 60px 0;
+        }
+
+        h2 {
+            font-size: 1.7em;
+            padding-left: 0.8em;
         }
 
         table {
-            font-size: 1em;
+            margin: 30px auto;
+        }
+
+        td:nth-child(2), td:nth-child(3) {
+            font-size: 0.9em;
         }
     }
 </style>
