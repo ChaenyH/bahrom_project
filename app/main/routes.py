@@ -16,10 +16,6 @@ def home():
 def about():
     return render_template('about.html')
 
-@main.route('/projects')
-def projects():
-    return render_template('projects.html')
-
 @main.route('/checklist-guide')
 def checklist_guide():
     return render_template('checklist_guide.html')
@@ -27,7 +23,6 @@ def checklist_guide():
 @main.route('/ethical-consumption')
 def ethical_consumption():
     return render_template('ethical_consumption.html')
-
 
 @main.route('/budget', methods=["GET", "POST"])
 def budget():
