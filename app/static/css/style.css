@@ -17,7 +17,28 @@
     --color-darkest-apricot: #8b765d;
 }
 
-/* 기본 스타일 */
+/* 화면이 768px 이하일 때 (모바일 환경) */
+@media (max-width: 768px) {
+    .desktop-title {
+        display: none; /* 데스크톱용 제목 숨김 */
+    }
+
+    .mobile-title {
+        display: block; /* 모바일용 제목 표시 */
+    }
+}
+
+/* 화면이 769px 이상일 때 (데스크톱 환경) */
+@media (min-width: 769px) {
+    .desktop-title {
+        display: block; /* 데스크톱용 제목 표시 */
+    }
+    
+    .mobile-title {
+        display: none; /* 모바일용 제목 숨김 */
+    }
+}
+
 body {
     font-family: 'Arial', sans-serif;
     color: var(--color-darkest-navy);
@@ -31,22 +52,29 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 30px;
+    padding: 16px;
     background-color: var(--color-white);
+    border-bottom: 0.5px solid var(--color-bluegrey);
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 0.5px solid var(--color-bluegrey);
 }
 
+@media (min-width: 769px) {
+    .header {
+        padding: 16px 32px;
+    }
+}
+
+/* 로고 */
 .logo {
     display: flex;
     align-items: center;
 }
 
 .logo img {
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     margin-right: 10px;
 }
 
@@ -54,52 +82,57 @@ body {
     display: flex;
     align-items: center;
     text-decoration: none;
-}
-
-.logo span {
-    font-size: 1.2em;
+    font-size: 16px;
     letter-spacing: -0.5px;
+    line-height: 20px;
     font-weight: bold;
     color: var(--color-darkest-navy);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* 텍스트 그림자 */
 }
 
-/* 화면이 769px 이상일 때 (데스크톱 환경) */
 @media (min-width: 769px) {
-    .desktop-title {
-        display: block; /* 데스크톱용 제목 표시 */
-    }
-    .mobile-title {
-        display: none; /* 모바일용 제목 숨김 */
+    .logo a {
+        font-size: 19px;
     }
 }
 
-/* 네비게이션 스타일 */
+/* 네비게이션 */
 .nav {
     display: flex;
-    gap: 15px;
+    gap: 5px;
 }
 
 .nav a {
     display: flex;
-    align-items: center;
     justify-content: center;
-    text-decoration: none;
+    align-items: center;
     color: var(--color-darkest-navy);
-    font-weight: bold;
-    padding: 10px 15px;
+    text-decoration: none;
     border-radius: 5px;
-    position: relative;
     transition: background-color 0.3s, color 0.3s;
 }
 
-.nav a:hover,
-.nav a:focus {
-    background-color: var(--color-light-skyblue);
-    color: var(--color-dark-navy);
+.nav a:hover {
+    background-color: var(--color-light-bluegrey);
 }
 
-/* 드롭다운 메뉴 스타일 */
+.nav-link {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 5px 10px;
+}
+
+@media (min-width: 769px) {
+    .nav {
+        gap: 15px;
+    }
+
+    .nav-link {
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+}
+
+/* 드롭다운 */
 .dropdown {
     position: relative;
 }
@@ -110,7 +143,7 @@ body {
     top: 100%;
     left: 0;
     background-color: var(--color-white);
-    border: 1px solid var(--color-bluegrey);
+    border: 0.5px solid var(--color-bluegrey);
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     z-index: 1000;
@@ -126,65 +159,42 @@ body {
 
 .dropdown-item {
     display: block;
-    padding: 10px 15px;
+    padding: 10px;
     text-decoration: none;
-    font-size: 1em;
+    font-size: 12px;
+    font-weight: 200;
     color: var(--color-darkest-navy);
-    border-radius: 4px;
     transition: background-color 0.3s, color 0.3s;
 }
 
 .dropdown-item:hover {
-    background-color: var(--color-light-skyblue);
-    color: var(--color-dark-navy);
+    background-color: var(--color-light-bluegrey);
 }
 
-/* 화면이 768px 이하일 때 (모바일 환경) */
-@media (max-width: 768px) {
-    .desktop-title {
-        display: none; /* 데스크톱용 제목 숨김 */
-    }
-    .mobile-title {
-        display: block; /* 모바일용 제목 표시 */
-    }
-
-    .header {
-        padding: 20px 15px;
-    }
-
-    .logo span {
-        font-size: 1.1em;
-    }
-
-    .nav {
-        gap: 5px;
-    }
-
-    .nav a {
-        font-size: 0.9em;
-        padding: 5px 10px;
+@media (min-width: 769px) {
+    .dropdown-item {
+        font-size: 14px;
+        padding: 10px 15px;
     }
 }
 
 /* 풋터 스타일 */
 .footer {
     background-color: var(--color-bluegrey);
-    padding: 20px;
-    margin-top: 80px;
+    padding: 64px 0;
     text-align: center;
     font-size: 0.9em;
     line-height: 1.5;
 }
 
 .footer-links {
-    margin-bottom: 15px;
     display: flex;
     justify-content: center;
     gap: 20px;
 }
 
 .footer-links a {
-    color: var(--color-dark-bluegrey);
+    color: var(--color-darker-bluegrey);
     text-decoration: none;
     font-weight: bold;
     letter-spacing: -0.5px;
@@ -195,9 +205,17 @@ body {
     color: var(--color-darkest-bluegrey);
 }
 
-.footer-info p {
-    margin: 5px 0;
-    font-size: 0.9em;
+.footer-info {
+    margin-top: 48px;
+    font-size: 13px;
+    line-height: 20px;
     letter-spacing: -0.5px;
+}
+
+.class-info {
     color: var(--color-darker-bluegrey);
+}
+
+.school-info, .email-info {
+    color: var(--color-dark-bluegrey);
 }

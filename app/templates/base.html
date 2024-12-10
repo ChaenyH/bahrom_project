@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="여행에서 윤리적 소비를 실천하며 공정한 관광 구조를 형성하세요.">
+    <meta name="description" content="여행에서 윤리적 소비를 실천하며 공정한 관광 구조 형성에 기여합시다!">
     <meta property="og:title" content="여행에서의 윤리적 소비">
     <meta property="og:description" content="윤리적 소비와 지속 가능한 여행을 위한 프로젝트를 확인해 보세요.">
-    <meta property="og:image" content="{{ url_for('static', filename='images/logo.png') }}">
+    <meta property="og:image" content="{{ url_for('static', filename='images/swu/thinkbear_head.png') }}">
     <meta property="og:url" content="{{ request.url }}">
     <meta name="twitter:card" content="summary_large_image">
     <title>{% block title %}여행에서의 윤리적 소비{% endblock %}</title>
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/logo.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/swu/thinkbear_head.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=1">
     {% block head %}{% endblock %}
     {% block styles %}{% endblock %}
@@ -19,21 +19,25 @@
     <div class="header">
         <div class="logo">
             <a href="/">
-                <img src="{{ url_for('static', filename='images/main_logo.png') }}" alt="Logo">
+                <img src="{{ url_for('static', filename='images/swu/main_logo_2.png') }}" alt="Logo">
                 <span class="desktop-title">여행에서의 윤리적 소비</span>
                 <span class="mobile-title">여행에서의<br>윤리적 소비</span>
             </a>
         </div>
         <nav class="nav">
-            <a class="nav-link" href="/about">팀 소개</a>
-            <div class="nav-link dropdown">
-                <a class="dropdown-toggle" href="#">가이드</a>
+            <div class="nav-menu-wrapper">
+                <a class="nav-link" href="/about">팀 소개</a>
+            </div>
+            <div class="nav-menu-wrapper dropdown">
+                <a class="nav-link" href="#">가이드</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="/checklist-guide">체크리스트</a>
                     <a class="dropdown-item" href="/ethical-consumption">실천 방법</a>
                 </div>
             </div>
-            <a class="nav-link" href="/budget">가계부</a>
+            <div class="nav-menu-wrapper">
+                <a class="nav-link" href="/budget">가계부</a>
+            </div>
         </nav>
     </div>
     <div class="base-container">
@@ -46,9 +50,9 @@
             <a href="https://instagram.com/when.u.trip" target="_blank">팀 인스타그램</a>
         </div>
         <div class="footer-info">
-            <p>서울여자대학교 2024년 2학기 바롬종합설계프로젝트 09분반 "여행갈때생각해조"</p>
-            <p>01797 서울시 노원구 화랑로 621 서울여자대학교</p>
-            <p>Copyright © 2024 SWU "When U Trip"</p>
+            <p class="class-info">서울여자대학교 2024년 2학기 바롬종합설계프로젝트<br>"여행갈때생각해조"</p>
+            <p class="school-info">01797 서울시 노원구 화랑로 621 서울여자대학교<br>Copyright © 2024 SWU "When U Trip"</p>
+            <p class="email-info">문의 hxchaeny@swu.ac.kr</p>
         </div>
     </footer>
         {% block scripts %}{% endblock %}
