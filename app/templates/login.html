@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block title %}여행에서의 윤리적 소비 - 로그인{% endblock %}
+
+{% block content %}
+<div class="main-section">
+    <div class="main-inner-section">
+        <h1>로그인</h1>
+        <div class="login-box">
+            <div id="email" class="input-box">
+                이메일
+            </div>
+            <div id="password" class="input-box">
+                비밀번호
+            </div>
+            <div id="login">로그인</div>
+            <div id="sign-up">회원가입</div>
+            <div id="find-password">
+                <a>비밀번호 찾기</a>
+            </div>
+        </div>
+        <div class="image-section">
+            <img id="thinkbear" src="{{ url_for('static', filename='images/swu/thinkbear_money.png') }}" alt="띵곰이 이미지">
+        </div>
+    </div>
+</div>
+
+<style>
+    .main-section {
+        display: block; /* 기본값 (다른 스타일이 없다면 생략 가능) */
+        position: relative;
+        background: var(--color-light-skyblue);
+        padding: 30px;
+    }
+
+    .main-inner-section {
+        position: relative;
+        min-width: 340px;
+        max-width: 420px;
+        margin: 0 auto; /* 상하 여백은 0, 좌우 여백은 auto로 중앙 정렬 */
+    }
+
+    h1 {
+        font-size: 32px;
+        padding: 10px 0 20px 4px;
+        margin: 0;
+        color: var(--color-white);
+        text-shadow: 
+            -1px -1px 0 var(--color-darker-bluegrey), /* 왼쪽 위 */
+            1px -1px 0 var(--color-darker-bluegrey),  /* 오른쪽 위 */
+            -1px 1px 0 var(--color-darker-bluegrey),  /* 왼쪽 아래 */
+            1px 1px 0 var(--color-darker-bluegrey);   /* 오른쪽 아래 */
+    }
+
+    .login-box {
+        border-radius: 16px;
+        box-shadow: 0 0 0 2px var(--color-skyblue);
+        background: var(--color-white);
+        padding: 40px 20px;
+        margin-bottom: 100px;
+    }
+
+    .input-box {
+        box-shadow: 0 0 0 1px var(--color-bluegrey);
+        padding: 16px;
+        margin-bottom: 28px;
+        border-radius: 8px;
+        color: var(--color-bluegrey);
+        font-size: 14px;
+    }
+
+    div #login {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 8px;
+        background: var(--color-skyblue);
+        height: 48.5px;
+        border-radius: 8px;
+        color: var(--color-white);
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    div #sign-up {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 8px;
+        background: var(--color-light-bluegrey);
+        height: 48.5px;
+        border-radius: 8px;
+        color: var(--color-darkest-navy);
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    div #find-password {
+        padding-top: 10px;
+        margin-bottom: 32px;
+        color: var(--color-darker-bluegrey);
+        font-size: 12px;
+        text-decoration: underline;
+    }
+
+    img#thinkbear {
+        width: 150px;
+        position: absolute; /* 절대 위치로 지정 */
+        bottom: -60px; /* 부모 컨테이너의 하단에서 40px만큼 위로 */
+        right: -10px; /* 부모 컨테이너의 오른쪽에서 20px만큼 왼쪽으로 */
+    }
+</style>
+{% endblock %}
