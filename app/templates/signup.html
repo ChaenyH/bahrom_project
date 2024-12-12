@@ -1,24 +1,24 @@
 {% extends "base.html" %}
 
-{% block title %}여행에서의 윤리적 소비 - 로그인{% endblock %}
+{% block title %}여행에서의 윤리적 소비 - 회원가입{% endblock %}
 
 {% block content %}
 <div class="main-section">
     <div class="main-inner-section">
-        <h1>로그인</h1>
-        <div class="login-box">
-            <div id="email" class="input-box">
-                이메일
-            </div>
-            <div id="password" class="input-box">
-                비밀번호
-            </div>
-            <button id="login">로그인</button>
-            <button id="signup" onclick="location.href='/signup'">회원가입</button>
-            <div id="find-password">
-                <a>비밀번호 찾기</a>
-            </div>
-        </div>
+        <h1>회원가입</h1>
+        <form class="login-box">
+            <label for="email">이메일</label>
+            <input type="email" id="email" name="email" placeholder="이메일">
+            
+            <label for="password">비밀번호</label>
+            <input type="password" id="password" name="password" placeholder="비밀번호">
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="비밀번호 확인">
+            
+            <label for="nickname">별명</label>
+            <input type="text" id="nickname" name="nickname" placeholder="닉네임">
+            
+            <button id="signup">회원가입</button>
+        </form>
         <div class="image-section">
             <img id="thinkbear" src="{{ url_for('static', filename='images/swu/thinkbear_money.png') }}" alt="띵곰이 이미지">
         </div>
@@ -29,7 +29,7 @@
     .main-section {
         display: block; /* 기본값 (다른 스타일이 없다면 생략 가능) */
         position: relative;
-        background: var(--color-light-skyblue);
+        background: var(--color-skyblue);
         padding: 30px;
     }
 
@@ -56,26 +56,43 @@
         display: flex;
         flex-direction: column;
         border-radius: 16px;
-        box-shadow: 0 0 0 2px var(--color-skyblue);
         background: var(--color-white);
-        padding: 40px 20px;
+        padding: 30px 20px;
         margin-bottom: 100px;
     }
 
-    .input-box {
-        box-shadow: 0 0 0 1px var(--color-bluegrey);
-        padding: 16px;
-        margin-bottom: 28px;
-        border-radius: 8px;
-        color: var(--color-bluegrey);
+    label {
+        margin: 20px 0 4px;
+        font-weight: 600;
         font-size: 14px;
+        color: var(--color-darker-bluegrey)
+    }
+    
+    input {
+        border-width: 0 0 1.5px;
+        border-color: var(--color-bluegrey);
+        padding: 6px 0;
+        margin-bottom: 16px;
+        color: var(--color-darkest-navy);
+        font-size: 16px;
+        font-weight: 800;
     }
 
-    div #login {
+    input:focus {
+        border-bottom: 1.5px solid var(--color-darkest-navy);
+        outline: none;
+    }
+
+    input::placeholder {
+        font-weight: 700;
+        color: var(--color-bluegrey);
+    }
+
+    div #signup {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-bottom: 8px;
+        margin: 32px 0;
         background: var(--color-skyblue);
         height: 48.5px;
         border-radius: 8px;
@@ -85,32 +102,14 @@
         border: none;
     }
 
-    div #signup {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 8px;
-        background: var(--color-light-bluegrey);
-        height: 48.5px;
-        border-radius: 8px;
-        color: var(--color-darkest-navy);
-        font-size: 16px;
-        font-weight: bold;
-        border: none;
-    }
-
-    div #find-password {
-        padding-top: 10px;
-        margin-bottom: 32px;
-        color: var(--color-darker-bluegrey);
-        font-size: 12px;
-        text-decoration: underline;
+    div #signup:hover {
+        background-color: var(--color-dark-bluegrey);
     }
 
     img#thinkbear {
         width: 150px;
         position: absolute; /* 절대 위치로 지정 */
-        bottom: -60px; /* 부모 컨테이너의 하단에서 40px만큼 위로 */
+        bottom: -115px; /* 부모 컨테이너의 하단에서 40px만큼 위로 */
         right: -10px; /* 부모 컨테이너의 오른쪽에서 20px만큼 왼쪽으로 */
     }
 </style>

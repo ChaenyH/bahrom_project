@@ -42,15 +42,15 @@ def budget():
     return render_template("budget.html", expenses=expenses, total_spent=total_spent, remaining_budget=remaining_budget)
 
 # HTML: 사용자 등록
-@main.route('/register', methods=['GET', 'POST'])
-def register():
+@main.route('/signup', methods=['GET', 'POST'])
+def signup():
     if request.method == 'POST':
         name = request.form.get('name')
         email = request.form.get('email')
         password = request.form.get('password')
 
         if User.query.filter_by(email=email).first():
-            return render_template('register.html', error="User already exists")
+            return render_template('signup.html', error="User already exists")
 
         user = User(name=name, email=email)
         user.set_password(password)
@@ -58,7 +58,7 @@ def register():
         db.session.commit()
 
         return redirect(url_for('main.login'))
-    return render_template('register.html')
+    return render_template('signup.html')
 
 # HTML: 사용자 로그인
 @main.route('/login', methods=['GET', 'POST'])
