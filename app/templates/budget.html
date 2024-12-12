@@ -1,96 +1,92 @@
 {% extends "base.html" %}
 
-{% block title %}여행 가계부{% endblock %}
-
-{% block styles %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/budget.css') }}">
-{% endblock %}
+{% block title %}여행에서의 윤리적 소비 - 여행 가계부{% endblock %}
 
 {% block content %}
-<header>
-    <h1>💰 여행 가계부 💰</h1>
-</header>
+<!-- 인트로 섹션 -->
+<div class="intro-section">
+    <h1>여행 가계부</h1>
+    <img src="{{ url_for('static', filename='images/swu/thinkbear_money.png') }}" alt="메인 이미지">
+</div>
 
-<main>
-    <!-- 여행 정보 입력 -->
-    <section>
-        <h2>여행 정보 입력</h2>
-        <form method="POST" action="/budget">
-            <label for="travel_location">여행지:</label>
-            <input type="text" id="travel_location" name="travel_location" required>
-            
-            <label for="budget">총 예산:</label>
-            <input type="number" id="budget" name="budget" required>
+<!-- 여행 추가하기 섹션 -->
+<div class="add-travel-section">
+    <button id="add-travel">
+        여행 추가하기
+        <img src="{{ url_for('static', filename='images/flat_icon/more-darkest-navy.png') }}" alt="인스타그램 로고">
+    </button>
+</div>
 
-            <button type="submit">저장</button>
-        </form>
-    </section>
+<!-- 로그인 섹션 -->
+<div class="login-section">
+    <button id="login" onclick="location.href='/login'">로그인하기</button>
+</div>
 
-    <!-- 소비 기록 -->
-    <section>
-        <h2>소비 기록</h2>
-        <section class="upload_receipt">
-            <h3>영수증 업로드</h3>
-            <form method="POST" action="/upload_receipt" enctype="multipart/form-data">
-                <input type="file" name="file" accept="image/*" class="upload_receipt">
-                <button type="submit">업로드</button>
-            </form>
-        </section>            
-        <form method="POST" action="/budget">
-            <label for="date">날짜:</label>
-            <input type="date" id="date" name="date">
-    
-            <label for="category">카테고리:</label>
-            <select id="category" name="category">
-                <option value="식비">식비</option>
-                <option value="교통">교통</option>
-                <option value="쇼핑">쇼핑</option>
-                <option value="기타">기타</option>
-            </select>
-    
-            <label for="amount">금액:</label>
-            <input type="number" id="amount" name="amount" required>
-    
-            <label for="memo">메모:</label>
-            <input type="text" id="memo" name="memo">
-    
-            <button type="submit">추가</button>
-        </form>
-    
-        <table>
-            <thead>
-                <tr>
-                    <th>날짜</th>
-                    <th>카테고리</th>
-                    <th>금액</th>
-                    <th>메모</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for expense in expenses %}
-                <tr>
-                    <td>{{ expense.date }}</td>
-                    <td>{{ expense.category }}</td>
-                    <td>{{ "{:,.0f}".format(expense.amount) }}원</td>
-                    <td>{{ expense.memo }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </section>
-    
-    <!-- 남은 예산 -->
-    <section>
-        <h2>예산 현황</h2>
-        <p>총 예산: 1,000,000원</p>
-        <p>현재 지출: {{ "{:,.0f}".format(total_spent) }}원</p>
-        <p>남은 예산: {{ "{:,.0f}".format(remaining_budget) }}원</p>
-    
-        <div style="border: 1px solid #ddd; border-radius: 5px; overflow: hidden;">
-            <div style="width: {{ (total_spent / 1000000) * 100 }}%; background-color: #4CAF93; height: 20px;"></div>
-        </div>
-    </section>        
-</main>
+<style>
+    /* 인트로 섹선 */
+    .intro-section {
+        display: flex;
+        justify-content: space-between;
+        background-color: var(--color-skyblue);
+        padding: 30px;
+    }
 
-<script src="{{ url_for('static', filename='js/budget.js') }}"></script>
+    h1 {
+        font-size: 32px;
+        padding: 10px 0 20px 4px;
+        margin: 0;
+        color: var(--color-white);
+        text-shadow: 
+            -1px -1px 0 var(--color-darker-bluegrey), /* 왼쪽 위 */
+            1px -1px 0 var(--color-darker-bluegrey),  /* 오른쪽 위 */
+            -1px 1px 0 var(--color-darker-bluegrey),  /* 왼쪽 아래 */
+            1px 1px 0 var(--color-darker-bluegrey);   /* 오른쪽 아래 */
+    }
+
+    .intro-section img {
+        width: 150px;
+    }
+
+    /* 여행 추가하기 섹션 */
+    .add-travel-section {
+        display: flex;
+        align-items: center; /* 세로 방향 중앙 정렬 */
+        justify-content: center; /* 가로 방향 중앙 정렬 */
+        background: var(--color-white);
+    }
+
+    #add-travel {
+        padding: 30px 0;
+        text-align: center;
+        color: var(--color-darkest-bluegrey);
+        text-decoration: none;
+        border: none;
+        background: none;
+        font-size: 20px;
+    }
+
+    .add-travel-section img {
+        width: 24px;
+        vertical-align: middle;
+        padding-left: 5px;
+    }
+
+    /* 로그인 섹션 */
+    .login-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 250px;
+    }
+
+    #login {
+        background: var(--color-white);
+        height: 60px;
+        width: 250px;
+        border-radius: 8px;
+        color: var(--color-darker-bluegrey);
+        font-size: 16px;
+        border: 1px solid var(--color-bluegrey);
+    }
+</style>
 {% endblock %}
