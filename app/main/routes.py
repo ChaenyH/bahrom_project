@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for, session
 from werkzeug.security import generate_password_hash
-from app.main.models import db, User, Expense
+from app.main.models import db, User, Travel
 from datetime import datetime
 from . import main
 
@@ -96,8 +96,23 @@ def budget():
 @main.route('/add-travel', methods=['GET', 'POST'])
 def add_travel():
     if request.method == 'POST':
-        # 여행 데이터를 데이터베이스에 저장
-        travel_name = request.form.get('travel_name')
-        # 추가적인 로직 작성
-        return redirect(url_for('main.budget'))
+        # 폼에서 전송된 데이터 가져오기
+        travel_name = request.form.get('travel-name')
+        country = request.form.get('country')
+        region = request.form.get('region')
+        budget = request.form.get('budget-won')
+        
+        # 유효성 검사
+        if not travel_name or not country or not budget:
+            error_message = "모든 필수 정보를 입력해주세요."
+            return render_template('add_travel.html', error=error_message)
+
+        # 데이터베이스에 저장
+        new_travel = Travel(name=travel_name, country=country, region=region, budget=int(budget))
+        db.session.add(new_travel)
+        db.session.commit()
+
+        success_message = "여행 일정이 성공적으로 추가되었습니다!"
+        return render_template('budget.html', success=success_message)
+    
     return render_template('add_travel.html')
