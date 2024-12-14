@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% block title %}여행에서의 윤리적 소비 - 여행 추가하기{% endblock %}
+
+{% block content %}
+<!-- 인트로 섹션 -->
+<div class="intro-section">
+    <h1>체크리스트</h1>
+    <img src="{{ url_for('static', filename='images/bunny/bunny_okay.png') }}" alt="메인 이미지">
+</div>
+
+<!-- 체크리스트 섹션 -->
+<div class="checklist-section">
+    <div class="description-section">
+        <h2>꼭 필요한 소비인가요?</h2>
+        <p>불필요한 소비를 줄이면<br>자원을 절약하고 환경 파괴를 막을 수 있어요</p>
+        <ul>
+            <li>
+                <img class="check-icon" src="{{ url_for('static', filename='images/flat_icon/check-icon.png') }}" alt="체크 아이콘">
+                "이 제품이 없으면 안 되는 이유"를 생각해 보기
+            </li>
+            <li>
+                <img class="check-icon" src="{{ url_for('static', filename='images/flat_icon/check-icon.png') }}" alt="체크 아이콘">
+                구매 전에 여러 번 고민해 보기
+            </li>
+        </ul>    
+    </div>
+
+    <div class="description-section">
+        <h2>계획적인 소비인가요?</h2>
+        <p>계획적인 소비는 재정 낭비를 막고<br>필요한 소비에만 집중할 수 있어요</p>
+        <ul>
+            <li>
+                <img class="check-icon" src="{{ url_for('static', filename='images/flat_icon/check-icon.png') }}" alt="체크 아이콘">
+                월간/주간/일간 예산 계획 세우기
+            </li>
+            <li>
+                <img class="check-icon" src="{{ url_for('static', filename='images/flat_icon/check-icon.png') }}" alt="체크 아이콘">
+                필요한 항목을 미리 리스트로 작성해두기
+            </li>
+        </ul>    
+    </div>
+
+    <div class="description-section">
+        <h2>환경을 해치지 않는 소비인가요?</h2>
+        <p>환경을 고려한 소비는<br>탄소 발자국을 줄이고 지구 생태계를 보호해요</p>
+        <ul>
+            <li>
+                <img class="check-icon" src="{{ url_for('static', filename='images/flat_icon/check-icon.png') }}" alt="체크 아이콘">
+                친환경 인증 마크 찾아보기
+            </li>
+            <li>
+                <img class="check-icon" src="{{ url_for('static', filename='images/flat_icon/check-icon.png') }}" alt="체크 아이콘">
+                재활용 가능하거나 생분해되는 제품 선택하기
+            </li>
+        </ul>    
+    </div>
+
+    <div class="description-section">
+        <h2>부당한 이익이 발생하는<br>소비는 아닌가요?</h2>
+        <p>윤리적 소비는<br>공정성과 정의를 지향해요</p>
+        <ul>
+            <li>
+                <img class="check-icon" src="{{ url_for('static', filename='images/flat_icon/check-icon.png') }}" alt="체크 아이콘">
+                공정무역 제품 찾아보기
+            </li>
+            <li>
+                <img class="check-icon" src="{{ url_for('static', filename='images/flat_icon/check-icon.png') }}" alt="체크 아이콘">
+                윤리적 기업의 제품 구매하기
+            </li>
+        </ul>    
+    </div>
+
+    <div class="description-section">
+        <h2>해당 지역의 로컬 가게나<br>친환경 가게도 찾아보셨나요?</h2>
+        <p>로컬 소비는 지역 경제를 활성화하고<br>탄소 배출을 줄이는 데 기여해요</p>
+        <ul>
+            <li>
+                <img class="check-icon" src="{{ url_for('static', filename='images/flat_icon/check-icon.png') }}" alt="체크 아이콘">
+                지역 농산물 직거래 장터 방문하기
+            </li>
+            <li>
+                <img class="check-icon" src="{{ url_for('static', filename='images/flat_icon/check-icon.png') }}" alt="체크 아이콘">
+                로컬 브랜드 제품 우선 구매하기
+            </li>
+        </ul>    
+    </div>
+</div>
+
+<style>
+    /* 인트로 섹선 */
+    .intro-section {
+        display: flex;
+        justify-content: space-between;
+        background-color: var(--color-darker-bluegrey);
+        padding: 30px;
+        border-bottom: 0.5px solid var(--color-bluegrey);
+    }
+
+    h1 {
+        font-size: 32px;
+        padding: 10px 0 20px 4px;
+        margin: 0;
+        color: var(--color-white);
+        text-shadow: 
+            -1px -1px 0 var(--color-darkest-navy), /* 왼쪽 위 */
+            1px -1px 0 var(--color-darkest-navy),  /* 오른쪽 위 */
+            -1px 1px 0 var(--color-darkest-navy),  /* 왼쪽 아래 */
+            1px 1px 0 var(--color-darkest-navy);   /* 오른쪽 아래 */
+    }
+
+    .intro-section img {
+        width: 150px;
+    }
+
+    /* 체크리스트 섹션 */
+    .checklist-section {
+        background: var(--color-bluegrey);
+        padding: 25px 20px;
+    }
+
+    .description-section {
+        background: var(--color-white);
+        border-radius: 16px;
+        padding: 16px 20px;
+        max-width: 360px;
+        margin: 0 auto 20px;
+    }
+
+    h2 {
+        font-size: 22px;
+        margin: 0 0 10px 0;
+    }
+
+    p {
+        font-size: 12px;
+        line-height: 18px;
+        margin: 0 0 14px 0;
+    }
+
+    .check-icon {
+        width: 24px;
+        margin-right: 10px;
+    }
+
+    .description-section ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-size: 14px;
+    }
+
+    .description-section ul li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 4px;
+    }
+</style>
+{% endblock %}

@@ -77,9 +77,9 @@ def logout():
 def about():
     return render_template('about.html')
 
-@main.route('/checklist-guide')
-def checklist_guide():
-    return render_template('checklist_guide.html')
+@main.route('/checklist')
+def checklist():
+    return render_template('checklist.html')
 
 @main.route('/ethical-consumption')
 def ethical_consumption():
