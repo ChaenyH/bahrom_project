@@ -37,6 +37,7 @@
     align-items: center; /* 세로 방향 중앙 정렬 */
     justify-content: center; /* 가로 방향 중앙 정렬 */
     background: var(--color-white);
+    border-bottom: 0.5px solid var(--color-bluegrey);
 }
 
 .instagram-link-section a {
@@ -62,6 +63,7 @@
     display: flex;
     justify-content: center; /* 가로 방향 중앙 정렬 */
     padding: 40px;
+    border-bottom: 0.5px solid var(--color-bluegrey);
 }
 
 .description-section h3 {

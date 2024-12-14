@@ -1,23 +1,22 @@
 from app import db  # app/__init__.py에서 정의된 db 인스턴스를 가져옴
+from datetime import datetime, timezone
+from sqlalchemy import CheckConstraint
 
 # 사용자 정보를 관리하는 데이터 모델
 class User(db.Model):
-    from sqlalchemy import CheckConstraint
-    from datetime import datetime, timezone
-
     id = db.Column(db.Integer, primary_key=True)  # 고유 식별자
-    name = db.Column(db.String(100), nullable=False)  # 사용자 이름
+    username = db.Column(db.String(100), nullable=False)  # 사용자 이름
     email = db.Column(db.String(120), unique=True, nullable=False)  # 이메일 주소(고유)
     __table_args__ = (
         CheckConstraint("email LIKE '%@%.%'", name='valid_email_check'),  # 이메일 유효성 검증
         )
-    # 비밀번호를 해싱하여 데이터베이스에 저장합니다.
-    # 해싱은 보안 강화를 위해 평문 비밀번호를 저장하지 않도록 합니다.
+    # 비밀번호를 해싱하여 데이터베이스에 저장
     password_hash = db.Column(db.String(128), nullable=False)
     created_at = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)  # UTC 시간 저장 (사용자 생성 시간)
 
-    # 사용자별 지출 데이터를 연결하기 위해 Expense 모델과 관계를 정의:
+    # 사용자별 지출 데이터를 연결하기 위해 Expense 모델과 관계를 정의
     expenses = db.relationship('Expense', backref='user', lazy='joined')
+    travels = db.relationship('Travel', backref='user', lazy='joined')
 
     # 비밀번호 설정 메서드
     def set_password(self, password):
@@ -33,6 +32,12 @@ class User(db.Model):
 
     def __repr__(self):
         return f"<User {self.name}, Registered on {self.created_at}>"
+
+# 여행 정보를 관리하는 데이터 모델
+class Travel(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(80), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
 # 지출 정보를 관리하는 데이터 모델
 class Expense(db.Model):

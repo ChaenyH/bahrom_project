@@ -6,19 +6,20 @@
 <div class="main-section">
     <div class="main-inner-section">
         <h1>로그인</h1>
-        <div class="login-box">
-            <div id="email" class="input-box">
-                이메일
-            </div>
-            <div id="password" class="input-box">
-                비밀번호
-            </div>
+        <form class="login-box" method="post" action="/login">
+            <input type="email" id="email" name="email" placeholder="이메일">            
+            <input type="password" id="password" name="password" placeholder="비밀번호">
+            
+            {% if error %}
+                <p class="error-message">{{ error }}</p>
+            {% endif %}
+
             <button id="login">로그인</button>
-            <button id="signup" onclick="location.href='/signup'">회원가입</button>
+            <button id="signup" onclick="location.href='/signup'" type="button">회원가입</button>
             <div id="find-password">
                 <a>비밀번호 찾기</a>
             </div>
-        </div>
+        </form>
         <div class="image-section">
             <img id="thinkbear" src="{{ url_for('static', filename='images/swu/thinkbear_money.png') }}" alt="띵곰이 이미지">
         </div>
@@ -62,13 +63,26 @@
         margin-bottom: 100px;
     }
 
-    .input-box {
+    input {
         box-shadow: 0 0 0 1px var(--color-bluegrey);
         padding: 16px;
         margin-bottom: 28px;
         border-radius: 8px;
+        border: none;
+    }
+
+    input::placeholder {
         color: var(--color-bluegrey);
         font-size: 14px;
+        font-weight: 600;
+    }
+
+    .error-message {
+        text-align: center;
+        color: var(--color-dark-pink);
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 0px;
     }
 
     div #login {

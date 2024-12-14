@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}여행에서의 윤리적 소비 - 여행 추가하기{% endblock %}
+
+{% block content %}
+<form method="POST" action="/add-travel">
+    <label for="travel_name">여행 이름:</label>
+    <input type="text" id="travel_name" name="travel_name" required>
+    <button type="submit">추가하기</button>
+</form>
+
+<style>
+#add-travel:hover, #login:hover {
+    background-color: var(--color-light-bluegrey);
+    cursor: pointer;
+}
+</style>
+{% endblock %}

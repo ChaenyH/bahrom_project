@@ -12,20 +12,15 @@
 <!-- 여행 추가하기 섹션 -->
 <div class="add-travel-section">
     <button id="add-travel">
-        여행 추가하기
-        <img src="{{ url_for('static', filename='images/flat_icon/more-darkest-navy.png') }}" alt="인스타그램 로고">
+        새로운 여행 1
+        <img src="{{ url_for('static', filename='images/flat_icon/down-darkest-navy.png') }}" alt="인스타그램 로고">
     </button>
 </div>
 
-{% if user_data %}
-    <h2>{{ user_data.username }}님의 여행 가계부</h2>
-    <!-- 여행 리스트 표시 -->
-{% else %}
 <!-- 로그인 섹션 -->
 <div class="login-section">
     <button id="login" onclick="location.href='/login'">로그인하기</button>
 </div>
-{% endif %}
 
 <style>
     /* 인트로 섹선 */
@@ -85,16 +80,6 @@
         align-items: center;
         height: 250px;
         border-bottom: 0.5px solid var(--color-bluegrey);   
-    }
-
-    #login {
-        background: var(--color-white);
-        height: 60px;
-        width: 250px;
-        border-radius: 8px;
-        color: var(--color-darker-bluegrey);
-        font-size: 16px;
-        border: 1px solid var(--color-bluegrey);
     }
 </style>
 {% endblock %}
