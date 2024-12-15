@@ -6,10 +6,15 @@
 
 .intro-section h1 {
     color: var(--color-darkest-navy);
+    text-shadow: 
+    -1px -1px 0 var(--color-white), /* 왼쪽 위 */
+    1px -1px 0 var(--color-white),  /* 오른쪽 위 */
+    -1px 1px 0 var(--color-white),  /* 왼쪽 아래 */
+    1px 1px 0 var(--color-white);   /* 오른쪽 아래 */
 }
 
 .intro-section p {
-    color: var(--color-darker-bluegrey);
+    color: var(--color-darkest-bluegrey);
     font-size: 16px;
     line-height: 22px;
 }
@@ -58,7 +63,7 @@
     padding-right: 5px;
 }
 
-/* 설명 카드 섹션 (공통) */
+/* 설명 카드 섹션 */
 .description-section {
     display: flex;
     justify-content: center; /* 가로 방향 중앙 정렬 */

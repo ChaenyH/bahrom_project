@@ -5,8 +5,10 @@
 {% block content %}
 <!-- 인트로 섹션 -->
 <div class="intro-section">
-    <h1>체크리스트</h1>
-    <img src="{{ url_for('static', filename='images/bunny/bunny_okay.png') }}" alt="메인 이미지">
+    <div class="intro-inner-section">
+        <h1>체크리스트</h1>
+        <img src="{{ url_for('static', filename='images/bunny/bunny_okay.png') }}" alt="메인 이미지">    
+    </div>
 </div>
 
 <!-- 체크리스트 섹션 -->
@@ -95,6 +97,14 @@
         background-color: var(--color-darker-bluegrey);
         padding: 30px;
         border-bottom: 0.5px solid var(--color-bluegrey);
+    }
+
+    .intro-inner-section {
+        height: 175px;
+        width: 340px;
+        display: flex;
+        justify-content: space-between;
+        margin: 0 auto;
     }
 
     h1 {

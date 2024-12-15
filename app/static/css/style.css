@@ -61,13 +61,6 @@ body {
     z-index: 1000;
 }
 
-@media (min-width: 769px) {
-    .header {
-        padding: 16px 32px;
-    }
-}
-
-/* 로고 */
 .logo {
     display: flex;
     align-items: center;
@@ -90,16 +83,37 @@ body {
     color: var(--color-darkest-navy);
 }
 
-@media (min-width: 769px) {
-    .logo a {
-        font-size: 19px;
-    }
+#menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0 10px
 }
 
-/* 네비게이션 */
+#menu-toggle img {
+    width: 20px;
+    height: 20px;
+}
+
+.menu-icon, .close-icon {
+    cursor: pointer;
+}
+
 .nav {
+    display: none;
+    position: absolute;
+    top: 80px;
+    right: 0;
+    background-color: var(--color-white);
+    padding: 0;
+    flex-direction: column;
+    border: 0.5px solid var(--color-bluegrey);
+    width: 100%;
+}
+
+.nav.active {
     display: flex;
-    gap: 5px;
 }
 
 .nav a {
@@ -111,18 +125,29 @@ body {
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s;
 }
-
 .nav a:hover {
     background-color: var(--color-light-bluegrey);
 }
 
 .nav-link {
-    font-size: 14px;
-    font-weight: 500;
-    padding: 5px 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.nav-menu-wrapper {
+    border-bottom: 0.5px solid var(--color-bluegrey);
+    padding: 23px 24px;
 }
 
 @media (min-width: 769px) {
+    .header {
+        padding: 16px 32px;
+    }
+
+    .logo a {
+        font-size: 19px;
+    }
+
     .nav {
         gap: 15px;
     }

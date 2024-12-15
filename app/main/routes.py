@@ -15,9 +15,20 @@ def get_user_data(user_id):
         "travels": user.travels  # 여행 데이터가 있다면 포함
     }
 
+@main.context_processor
+def inject_user():
+    if 'user_id' in session:
+        # 세션에 사용자 ID가 있으면 데이터베이스에서 사용자 정보 가져오기
+        user_data = get_user_data(session['user_id'])
+    else:
+        # 로그인되지 않은 경우 None 반환
+        user_data = None
+
+    return {'user_data': user_data}
+
 @main.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('index.html')  # 로그인 전 화면
 
 # HTML: 사용자 등록
 @main.route('/signup', methods=['GET', 'POST'])
@@ -87,11 +98,7 @@ def ethical_consumption():
 
 @main.route('/budget', methods=["GET", "POST"])
 def budget():
-    if 'user_id' not in session:
         return render_template('budget.html')  # 로그인 전 화면
-    else:
-        user_data = get_user_data(session['user_id'])  # 로그인 후 사용자 데이터
-        return render_template('budget.html', user_data=user_data)
 
 @main.route('/add-travel', methods=['GET', 'POST'])
 def add_travel():

@@ -5,8 +5,10 @@
 {% block content %}
 <!-- 인트로 섹션 -->
 <div class="intro-section">
-    <h1>여행 가계부</h1>
-    <img src="{{ url_for('static', filename='images/swu/thinkbear_money.png') }}" alt="메인 이미지">
+    <div class="intro-inner-section">
+        <h1>여행 가계부</h1>
+        <img src="{{ url_for('static', filename='images/swu/thinkbear_money.png') }}" alt="메인 이미지">    
+    </div>
 </div>
 
 <!-- 여행 추가하기 섹션 -->
@@ -26,7 +28,7 @@
 <!-- 여행 데이터가 없는 경우 -->
 <div class="no-trip-section">
     <img src="{{ url_for('static', filename='images/flat_icon/up-arrow-dark-bluegrey.png') }}" alt="화살표">
-    <p>여행 일정을 추가해 볼까요?</p>
+    <p>여행 일정을 추가해 볼까요?<br>(추가 기능 업데이트를 기다려 주세요!)</p>
 </div>
 {% else %}
 <!-- 로그인 섹션 -->
@@ -45,11 +47,17 @@
 <style>
     /* 인트로 섹선 */
     .intro-section {
-        display: flex;
-        justify-content: space-between;
         background-color: var(--color-skyblue);
         padding: 30px;
         border-bottom: 0.5px solid var(--color-bluegrey);
+    }
+
+    .intro-inner-section {
+        height: 175px;
+        width: 340px;
+        display: flex;
+        justify-content: space-between;
+        margin: 0 auto;
     }
 
     h1 {

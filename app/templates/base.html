@@ -15,6 +15,7 @@
     {% block head %}{% endblock %}
     {% block styles %}{% endblock %}
 </head>
+
 <body>
     <div class="header">
         <div class="logo">
@@ -24,25 +25,45 @@
                 <span class="mobile-title">여행에서의<br>윤리적 소비</span>
             </a>
         </div>
-        <nav class="nav">
+
+        <!-- 메뉴 버튼 -->
+        <button id="menu-toggle">
+            <img id="menu-icon" src="{{ url_for('static', filename='images/flat_icon/menu-darkest-navy.png') }}" 
+                alt="Menu" 
+                data-menu="{{ url_for('static', filename='images/flat_icon/menu-darkest-navy.png') }}"
+                data-close="{{ url_for('static', filename='images/flat_icon/close-darkest-navy.png') }}">
+        </button>
+
+        <!-- 하위 메뉴 항목 -->
+        <nav id="nav-menu" class="nav">
             <div class="nav-menu-wrapper">
                 <a class="nav-link" href="/about">팀 소개</a>
             </div>
-            <div class="nav-menu-wrapper dropdown">
-                <a class="nav-link" href="#">가이드</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/checklist">체크리스트</a>
-                    <a class="dropdown-item" href="/ethical-consumption">실천 방법</a>
-                </div>
+            <div class="nav-menu-wrapper">
+                <a class="nav-link" href="/checklist">체크리스트</a>
+            </div>
+            <div class="nav-menu-wrapper">
+                <a class="nav-link" href="/ethical-consumption">실천 방법</a>
             </div>
             <div class="nav-menu-wrapper">
                 <a class="nav-link" href="/budget">가계부</a>
             </div>
+            {% if user_data %}
+            <div class="nav-menu-wrapper">
+                <a class="nav-link" href="/logout">로그아웃</a>
+            </div>
+            {% else %}
+            <div class="nav-menu-wrapper">
+                <a class="nav-link" href="/login">로그인</a>
+            </div>
+            {% endif %}
         </nav>
     </div>
+
     <div class="base-container">
         {% block content %}{% endblock %}
     </div>
+
     <footer class="footer">
         <div class="footer-links">
             <a href="https://www.youtube.com/user/seoulwomensuniv" target="_blank">서울여대 유튜브</a>
@@ -55,6 +76,8 @@
             <p class="email-info">문의 hxchaeny@swu.ac.kr</p>
         </div>
     </footer>
-        {% block scripts %}{% endblock %}
+
+    <script src="{{ url_for('static', filename='js/navToggle.js') }}"></script>
+    {% block scripts %}{% endblock %}
 </body>
 </html>
