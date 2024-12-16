@@ -92,18 +92,14 @@
 <style>
     /* 인트로 섹선 */
     .intro-section {
-        display: flex;
-        justify-content: space-between;
         background-color: var(--color-darker-bluegrey);
         padding: 30px;
         border-bottom: 0.5px solid var(--color-bluegrey);
     }
 
     .intro-inner-section {
-        height: 175px;
-        width: 340px;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         margin: 0 auto;
     }
 
@@ -122,6 +118,14 @@
     .intro-section img {
         width: 150px;
     }
+
+    @media (min-width: 769px) {
+        .intro-inner-section {
+            justify-content: space-around;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+}
 
     /* 체크리스트 섹션 */
     .checklist-section {

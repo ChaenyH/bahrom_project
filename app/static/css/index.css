@@ -30,9 +30,11 @@
 }
 
 @media (min-width: 769px) {
-    .intro-section {
+    .intro-inner-section {
         display: flex;
         justify-content: space-around;
+        max-width: 800px;
+        margin: 0 auto;
     }
 }
 

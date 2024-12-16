@@ -1,11 +1,12 @@
 from app import db  # app/__init__.py에서 정의된 db 인스턴스를 가져옴
 from datetime import datetime, timezone
 from sqlalchemy import CheckConstraint
+from sqlalchemy.dialects.postgresql import ENUM
 
 # 사용자 정보를 관리하는 데이터 모델
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)  # 고유 식별자
-    username = db.Column(db.String(100), nullable=False)  # 사용자 이름
+    username = db.Column(db.String(10), nullable=False)  # 사용자 이름
     email = db.Column(db.String(120), unique=True, nullable=False)  # 이메일 주소(고유)
     __table_args__ = (
         CheckConstraint("email LIKE '%@%.%'", name='valid_email_check'),  # 이메일 유효성 검증
@@ -36,7 +37,12 @@ class User(db.Model):
 # 여행 정보를 관리하는 데이터 모델
 class Travel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80), nullable=False)
+    travel_name = db.Column(db.String(80), nullable=False)
+    country = db.Column(ENUM('한국', '미국', '유럽', '일본', '베트남', '대만', name='country_types'), nullable=False)
+    region = db.Column(db.String(80), nullable=True, default="")
+    budget_won = db.Column(db.Integer, nullable=False)
+    currency = db.Column(ENUM('KRW', 'USD', 'EUR', 'JPY', 'VND', 'NTD', name='currency_types'), nullable=False)
+    budget_exchanged = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
 # 지출 정보를 관리하는 데이터 모델

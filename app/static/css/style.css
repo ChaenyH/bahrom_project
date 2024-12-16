@@ -116,27 +116,62 @@ body {
     display: flex;
 }
 
-.nav a {
+.nav-menu-wrapper {
+    border-bottom: 0.5px solid var(--color-bluegrey);
+    padding: 23px 24px;
+}
+
+.nav-link {
     display: flex;
     justify-content: center;
     align-items: center;
     color: var(--color-darkest-navy);
     text-decoration: none;
-    border-radius: 5px;
     transition: background-color 0.3s, color 0.3s;
-}
-.nav a:hover {
-    background-color: var(--color-light-bluegrey);
-}
-
-.nav-link {
     font-size: 16px;
     font-weight: bold;
 }
 
-.nav-menu-wrapper {
-    border-bottom: 0.5px solid var(--color-bluegrey);
-    padding: 23px 24px;
+.greeting {
+    text-align: center;
+    color: var(--color-dark-pink);
+    font-size: 16px;
+    font-weight: bold;
+    margin: 22px 0 22px;
+}
+
+.nav-button-wrapper {
+    width: 340px;
+    height: 48px;
+    border: 2px solid var(--color-skyblue);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logout-btn {
+    background: var(--color-white);
+    margin: 0 auto 200px;
+}
+
+#login-btn {
+    background: var(--color-skyblue);
+    margin: 60px auto 200px;
+}
+
+.nav-button {
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#logout-btn a {
+    color: var(--color-skyblue);
+}
+
+#login-btn a {
+    color: var(--color-white);
 }
 
 @media (min-width: 769px) {
@@ -154,52 +189,6 @@ body {
 
     .nav-link {
         font-size: 16px;
-        padding: 10px 15px;
-    }
-}
-
-/* 드롭다운 */
-.dropdown {
-    position: relative;
-}
-
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: var(--color-white);
-    border: 0.5px solid var(--color-bluegrey);
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    padding: 10px 0;
-    width: 150px;
-}
-
-.dropdown:hover .dropdown-menu {
-    display: block;
-    right: 0;
-    left: auto;
-}
-
-.dropdown-item {
-    display: block;
-    padding: 10px;
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: 200;
-    color: var(--color-darkest-navy);
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.dropdown-item:hover {
-    background-color: var(--color-light-bluegrey);
-}
-
-@media (min-width: 769px) {
-    .dropdown-item {
-        font-size: 14px;
         padding: 10px 15px;
     }
 }

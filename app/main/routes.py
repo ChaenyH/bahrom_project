@@ -107,19 +107,47 @@ def add_travel():
         travel_name = request.form.get('travel-name')
         country = request.form.get('country')
         region = request.form.get('region')
-        budget = request.form.get('budget-won')
+        budget_won = request.form.get('budget-won')
+
+        # 국가에 따른 화폐 자동 매핑
+        COUNTRY_TO_CURRENCY = {
+            '한국': 'KRW',
+            '미국': 'USD',
+            '유럽': 'EUR',
+            '일본': 'JPY',
+            '베트남': 'VND',
+            '대만': 'NTD'
+        }
+        currency = COUNTRY_TO_CURRENCY.get(country)
         
         # 유효성 검사
-        if not travel_name or not country or not budget:
+        if not travel_name or not country or not budget_won:
             error_message = "모든 필수 정보를 입력해주세요."
             return render_template('add_travel.html', error=error_message)
 
+        existing_travel = Travel.query.filter_by(
+            travel_name=travel_name,
+            user_id=session['user_id']
+        ).first()
+
+        if existing_travel:
+            error_message = "이미 존재하는 이름입니다."
+            return render_template('add_travel.html', error=error_message)
+
         # 데이터베이스에 저장
-        new_travel = Travel(name=travel_name, country=country, region=region, budget=int(budget))
+        new_travel = Travel(
+            travel_name=travel_name,
+            country=country,
+            region=region,
+            budget_won=int(budget_won),
+            currency=currency,
+            budget_exchanged=0,  # 환율 변환된 예산은 이후 계산 가능
+            user_id=session['user_id']
+        )
         db.session.add(new_travel)
         db.session.commit()
 
-        success_message = "여행 일정이 성공적으로 추가되었습니다!"
-        return render_template('budget.html', success=success_message)
+        # POST 요청 후 리다이렉트
+        return redirect(url_for('main.budget'))  # PRG 패턴 적용
     
     return render_template('add_travel.html')

@@ -3,21 +3,35 @@
 {% block title %}여행에서의 윤리적 소비 - 여행 추가하기{% endblock %}
 
 {% block content %}
+<!-- 닫기(X) 아이콘 추가 -->
+<div class="close-section">
+    <button id="close-btn" onclick="history.back()">
+        <img src="{{ url_for('static', filename='images/flat_icon/close-darkest-navy.png') }}" alt="닫기">
+    </button>
+</div>
+
 <form action="{{ url_for('main.add_travel') }}" method="POST">
     <div class="input-section">
         <label for="travel-name">여행 이름:</label>
         <input type="text" id="travel-name" name="travel-name" required>    
     </div>
     <div class="input-section">
-        <label for="country">국가:</label>
-        <input type="text" id="country" name="country" required>
-    </div>
+        <label for="country">대륙/국가:</label>
+        <select id="country" name="country" required>
+            <option value="한국">한국</option>
+            <option value="미국">미국</option>
+            <option value="유럽">유럽</option>
+            <option value="일본">일본</option>
+            <option value="베트남">베트남</option>
+            <option value="대만">대만</option>
+        </select>
+        </div>
     <div class="input-section">
         <label for="region">지역:</label>
         <input type="text" id="region" name="region">
     </div>
     <div class="input-section">
-        <label for="budget-won">예산(원):</label>
+        <label for="budget-won">예산 (원):</label>
         <input type="number" id="budget-won" name="budget-won" required>
     </div>
     
@@ -30,8 +44,25 @@
 </form>
 
 <style>
+    /* 닫기 버튼 섹션 */
+    .close-section {
+        padding: 20px;
+        display: flex;
+        justify-content: right;
+    }
+
+    #close-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    #close-btn img {
+        width: 20px;
+    }
+
     form {
-        padding: 40px 0 60px;
+        padding: 0 0 60px;
         display: flexbox;
         text-align: center;
     }
@@ -48,7 +79,7 @@
         margin-right: 10px;
     }
 
-    input {
+    input, select {
         border: 1px solid var(--color-bluegrey);
         border-radius: 5px;
         background-color: var(--color-white);
@@ -60,6 +91,7 @@
     .error-message {
         color: var(--color-dark-pink);
         font-weight: bold;
+        padding: 16px 0;
     }
 
     .submit {
@@ -67,10 +99,11 @@
         height: 40px;
         width: 250px;
         border-radius: 8px;
-        color: var(--color-darker-bluegrey);
+        color: var(--color-darkest-navy);
         font-size: 16px;
-        border: 1px solid var(--color-bluegrey);
-        margin-top: 20px;
+        font-weight: 500;
+        border: 1.5px solid var(--color-darkest-navy);
+        margin: 20px 0;
     }
 </style>
 {% endblock %}

@@ -12,36 +12,75 @@
 </div>
 
 <!-- 여행 추가하기 섹션 -->
+<!-- 로그인이 되어 있고, 등록된 여행 데이터가 존재하는 경우 -->
+{% if user_data and user_data.travels %}
+<div class="add-travel-section">
+    <button id="travel-list-btn">
+        여행 목록
+        <img src="{{ url_for('static', filename='images/flat_icon/down-darkest-navy.png') }}" alt="토글 열기">
+    </button>
+</div>
+<div class="travel-list" id="travel-list" style="display: none;">
+    {% for travel in user_data.travels %}
+    <div class="travel-inner-list">
+        <p class="inlist-travel-name">{{ travel.travel_name }}</p>
+        <p class="inlist-travel-country">{{ travel.country }}</p>
+    </div>
+    {% endfor %}
+    <div id="travel-inner-list" class="add-travel-section">
+        <button id="add-travel-btn">
+            여행 추가하기
+            <img src="{{ url_for('static', filename='images/flat_icon/more-darkest-navy.png') }}" alt="여행 추가하기">
+        </button>
+    </div>
+</div>
+{% else %}
 <div class="add-travel-section">
     <button id="add-travel-btn">
         여행 추가하기
-        <img src="{{ url_for('static', filename='images/flat_icon/more-darkest-navy.png') }}" alt="인스타그램 로고">
+        <img src="{{ url_for('static', filename='images/flat_icon/more-darkest-navy.png') }}" alt="여행 추가하기">
     </button>
 </div>
-
-<!-- 성공 메시지 -->
-{% if success %}
-    <p class="success-message">{{ success }}</p>
-{% endif %}
-
-{% if user_data %}
-<!-- 여행 데이터가 없는 경우 -->
-<div class="no-trip-section">
-    <img src="{{ url_for('static', filename='images/flat_icon/up-arrow-dark-bluegrey.png') }}" alt="화살표">
-    <p>여행 일정을 추가해 볼까요?<br>(추가 기능 업데이트를 기다려 주세요!)</p>
-</div>
-{% else %}
-<!-- 로그인 섹션 -->
-<div class="login-section">
-    <button id="login" onclick="location.href='/login'">로그인하기</button>
-</div>
+    <!-- 로그인은 되어있지만 등록된 여행 데이터가 없는 경우 -->
+    {% if user_data %}
+    <div class="no-trip-section">
+        <img src="{{ url_for('static', filename='images/flat_icon/up-arrow-dark-bluegrey.png') }}" alt="화살표">
+        <p>여행 일정을 추가해 볼까요?<br>(추가 기능 업데이트를 기다려 주세요!)</p>
+    </div>    
+    <!-- 로그인이 되어있지 않은 경우 -->
+    {% else %}
+    <div class="login-section">
+        <button id="login" onclick="location.href='/login'">로그인하기</button>
+    </div>    
+    {% endif %}
 {% endif %}
 
 <script>
-    document.getElementById('add-travel-btn').addEventListener('click', function () {
-        // 팝업 창으로 이동
-        window.location.href = '/add-travel';
-    });
+    // Jinja2를 통해 user_data 상태를 JavaScript로 전달
+    const userDataExists = {{ 'true' if user_data else 'false' }};
+
+    // 여행 추가하기 버튼
+    const addTravelBtn = document.getElementById('add-travel-btn');
+    if (addTravelBtn) {
+        addTravelBtn.addEventListener('click', function () {
+            if (userDataExists) {
+                // 유저 데이터가 존재하면 여행 추가 화면으로 이동
+                window.location.href = '/add-travel';
+            } else {
+                // 유저 데이터가 없으면 로그인 화면으로 이동
+                window.location.href = '/login';
+            }
+        });
+    }
+
+    // 여행 목록 토글 버튼
+    const travelListBtn = document.getElementById('travel-list-btn');
+    const travelList = document.getElementById('travel-list');
+    if (travelListBtn && travelList) {
+        travelListBtn.addEventListener('click', function () {
+            travelList.style.display = travelList.style.display === 'none' ? 'block' : 'none';
+        });
+    }
 </script>
 
 <style>
@@ -53,7 +92,6 @@
     }
 
     .intro-inner-section {
-        height: 175px;
         width: 340px;
         display: flex;
         justify-content: space-between;
@@ -85,7 +123,7 @@
         border-bottom: 0.5px solid var(--color-bluegrey);
     }
 
-    #add-travel-btn {
+    #add-travel-btn, #travel-list-btn {
         padding: 30px 0;
         text-align: center;
         color: var(--color-darkest-bluegrey);
@@ -104,6 +142,34 @@
     .success-message {
         color: var(--color-dark-pink);
         font-weight: bold;
+    }
+
+    .travel-inner-list {
+        padding: 20px 0;
+        background: var(--color-white);
+    }
+
+    .inlist-travel-name {
+        font-size: 20px;
+        text-align: center;
+        margin: 0;
+        color: var(--color-darkest-navy);
+    }
+
+    .inlist-travel-country {
+        font-size: 14px;
+        text-align: center;
+        margin: 0;
+        color: var(--color-dark-bluegrey);
+    }
+
+    #travel-inner-list.add-travel-section button {
+        font-size: 16px;
+    }
+
+    #travel-inner-list.add-travel-section img {
+        width: 18px;
+        vertical-align: middle;
     }
 
     /* 여행 데이터가 없는 경우 */
