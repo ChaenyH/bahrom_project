@@ -39,8 +39,6 @@ def signup():
         password = request.form.get('password')
         confirm_password = request.form.get('confirm-password')
 
-        print(f"Received data: username={username}, email={email}, password={password}")
-
         # 입력값 유효성 검사
         if not email or not password or not username:
             return render_template('signup.html', error="모든 필드를 입력해주세요")
@@ -57,6 +55,8 @@ def signup():
         new_user = User(username=username, email=email, password_hash=generate_password_hash(password))
         db.session.add(new_user)
         db.session.commit()
+
+        print(f"Saved Data: username={username}, email={email}, password={password}")
 
         return redirect(url_for('main.login'))  # 로그인 페이지로 이동
     
@@ -154,6 +154,8 @@ def add_travel():
         )
         db.session.add(new_travel)
         db.session.commit()
+
+        print(f"Saved Data: travel_name={travel_name}, country={country}, region={region}, budget_won={int(budget_won)}, currency={currency}, budget_exchanged={0}, user_id={session['user_id']}")
 
         # POST 요청 후 리다이렉트
         return redirect(url_for('main.budget'))  # PRG 패턴 적용
