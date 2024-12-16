@@ -2,6 +2,10 @@
 
 {% block title %}여행에서의 윤리적 소비 - 여행 가계부{% endblock %}
 
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/budget.css') }}">
+{% endblock %}
+
 {% block content %}
 <!-- 인트로 섹션 -->
 <div class="intro-section">
@@ -12,14 +16,16 @@
 </div>
 
 <!-- 여행 추가하기 섹션 -->
+
 <!-- 로그인이 되어 있고, 등록된 여행 데이터가 존재하는 경우 -->
 {% if user_data and user_data.travels %}
 <div class="add-travel-section">
     <button id="travel-list-btn">
-        여행 목록
+        <span id="selected-travel-name">{{ user_data.travels[0].travel_name }}</span>
         <img src="{{ url_for('static', filename='images/flat_icon/down-darkest-navy.png') }}" alt="토글 열기">
     </button>
 </div>
+
 <div class="travel-list" id="travel-list" style="display: none;">
     {% for travel in user_data.travels %}
     <div class="travel-inner-list">
@@ -27,13 +33,69 @@
         <p class="inlist-travel-country">{{ travel.country }}</p>
     </div>
     {% endfor %}
-    <div id="travel-inner-list" class="add-travel-section">
+    <div class="travel-inner-list">
         <button id="add-travel-btn">
             여행 추가하기
-            <img src="{{ url_for('static', filename='images/flat_icon/more-darkest-navy.png') }}" alt="여행 추가하기">
+            <img src="{{ url_for('static', filename='images/flat_icon/more-darker-bluegrey.png') }}" alt="여행 추가하기">
         </button>
     </div>
 </div>
+
+<div class="travel-budget-dashboard">
+
+    <div class="description-card">
+        <div class="card-header">
+            <h2>여행지</h2>
+            <div>수정</div>
+        </div>
+        <div class="card-descript-section">
+            <div class="card-descript-inner-section">
+                <p id="label">국가</p>
+                <p id="description">{{ user_data.travels[0].country }}</p>    
+            </div>
+            <div class="card-descript-inner-section">
+                <p id="label">화폐</p>
+                <p id="description">{{ user_data.travels[0].currency }}</p>
+            </div>    
+        </div>
+        <div class="card-descript-section">
+            <div class="card-descript-inner-section">
+                <p id="label">지역</p>
+                {% if user_data.travels[0].region %}
+                    <p id="description">{{ user_data.travels[0].region }}</p>
+                {% endif %}    
+            </div>
+        </div>
+    </div>
+
+    <div class="description-card">
+        <div class="card-header">
+            <h2>예산</h2>
+            <div>수정</div>
+        </div>
+        <div class="card-descript-section">
+            <div class="card-descript-inner-section">
+                <p id="label">쓸 수 있는 금액</p>
+                <p id="description">{{ user_data.travels[0].budget_won }}원</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="description-card">
+        <div class="card-header">
+            <h2>소비 한 눈에 보기</h2>
+        </div>
+        <div class="card-descript-section">
+            <div class="card-descript-inner-section">
+                <p id="label">가장 많이 지출한 카테고리</p>
+                <p id="description">{{ user_data.travels[0].country }}</p>
+            </div>    
+        </div>
+    </div>
+
+</div>
+
+<!-- 로그인이 되어있지 않거나, 로그인은 되어있지만 등록된 여행 데이터가 없는 경우 -->
 {% else %}
 <div class="add-travel-section">
     <button id="add-travel-btn">
@@ -41,18 +103,21 @@
         <img src="{{ url_for('static', filename='images/flat_icon/more-darkest-navy.png') }}" alt="여행 추가하기">
     </button>
 </div>
+
     <!-- 로그인은 되어있지만 등록된 여행 데이터가 없는 경우 -->
     {% if user_data %}
     <div class="no-trip-section">
         <img src="{{ url_for('static', filename='images/flat_icon/up-arrow-dark-bluegrey.png') }}" alt="화살표">
-        <p>여행 일정을 추가해 볼까요?<br>(추가 기능 업데이트를 기다려 주세요!)</p>
+        <p>여행 일정을 추가해 볼까요?</p>
     </div>    
+
     <!-- 로그인이 되어있지 않은 경우 -->
     {% else %}
     <div class="login-section">
         <button id="login" onclick="location.href='/login'">로그인하기</button>
     </div>    
     {% endif %}
+
 {% endif %}
 
 <script>
@@ -82,133 +147,4 @@
         });
     }
 </script>
-
-<style>
-    /* 인트로 섹선 */
-    .intro-section {
-        background-color: var(--color-skyblue);
-        padding: 30px;
-        border-bottom: 0.5px solid var(--color-bluegrey);
-    }
-
-    .intro-inner-section {
-        width: 340px;
-        display: flex;
-        justify-content: space-between;
-        margin: 0 auto;
-    }
-
-    h1 {
-        font-size: 32px;
-        padding: 10px 0 20px 4px;
-        margin: 0;
-        color: var(--color-white);
-        text-shadow: 
-            -1px -1px 0 var(--color-darker-bluegrey), /* 왼쪽 위 */
-            1px -1px 0 var(--color-darker-bluegrey),  /* 오른쪽 위 */
-            -1px 1px 0 var(--color-darker-bluegrey),  /* 왼쪽 아래 */
-            1px 1px 0 var(--color-darker-bluegrey);   /* 오른쪽 아래 */
-    }
-
-    .intro-section img {
-        width: 150px;
-    }
-
-    /* 여행 추가하기 섹션 */
-    .add-travel-section {
-        display: flex;
-        align-items: center; /* 세로 방향 중앙 정렬 */
-        justify-content: center; /* 가로 방향 중앙 정렬 */
-        background: var(--color-white);
-        border-bottom: 0.5px solid var(--color-bluegrey);
-    }
-
-    #add-travel-btn, #travel-list-btn {
-        padding: 30px 0;
-        text-align: center;
-        color: var(--color-darkest-bluegrey);
-        text-decoration: none;
-        border: none;
-        background: none;
-        font-size: 20px;
-    }
-
-    .add-travel-section img {
-        width: 24px;
-        vertical-align: middle;
-        padding-left: 5px;
-    }
-
-    .success-message {
-        color: var(--color-dark-pink);
-        font-weight: bold;
-    }
-
-    .travel-inner-list {
-        padding: 20px 0;
-        background: var(--color-white);
-    }
-
-    .inlist-travel-name {
-        font-size: 20px;
-        text-align: center;
-        margin: 0;
-        color: var(--color-darkest-navy);
-    }
-
-    .inlist-travel-country {
-        font-size: 14px;
-        text-align: center;
-        margin: 0;
-        color: var(--color-dark-bluegrey);
-    }
-
-    #travel-inner-list.add-travel-section button {
-        font-size: 16px;
-    }
-
-    #travel-inner-list.add-travel-section img {
-        width: 18px;
-        vertical-align: middle;
-    }
-
-    /* 여행 데이터가 없는 경우 */
-    .no-trip-section {
-        height: 180px;
-        display: flexbox;
-        border-bottom: 0.5px solid var(--color-bluegrey);
-        text-align: center;
-    }
-
-    .no-trip-section img {
-        display: block;
-        width: 40px;
-        margin: 50px auto 20px;
-    }
-
-    .no-trip-section p {
-        font-size: 16px;
-        color: var(--color-darker-bluegrey);
-        margin: 0 auto;
-    }
-
-    /* 로그인 섹션 */
-    .login-section {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 250px;
-        border-bottom: 0.5px solid var(--color-bluegrey);   
-    }
-
-    #login {
-        background: var(--color-white);
-        height: 60px;
-        width: 250px;
-        border-radius: 8px;
-        color: var(--color-darker-bluegrey);
-        font-size: 16px;
-        border: 1px solid var(--color-bluegrey);
-    }
-</style>
 {% endblock %}

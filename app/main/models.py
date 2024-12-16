@@ -41,7 +41,7 @@ class Travel(db.Model):
     country = db.Column(ENUM('한국', '미국', '유럽', '일본', '베트남', '대만', name='country_types'), nullable=False)
     region = db.Column(db.String(80), nullable=True, default="")
     budget_won = db.Column(db.Integer, nullable=False)
-    currency = db.Column(ENUM('KRW', 'USD', 'EUR', 'JPY', 'VND', 'NTD', name='currency_types'), nullable=False)
+    currency = db.Column(db.String(3), nullable=False)  # ISO 4217 코드 (예: KRW, USD)
     budget_exchanged = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 

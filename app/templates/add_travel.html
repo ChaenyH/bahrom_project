@@ -3,89 +3,113 @@
 {% block title %}여행에서의 윤리적 소비 - 여행 추가하기{% endblock %}
 
 {% block content %}
-<!-- 닫기(X) 아이콘 추가 -->
-<div class="close-section">
-    <button id="close-btn" onclick="history.back()">
-        <img src="{{ url_for('static', filename='images/flat_icon/close-darkest-navy.png') }}" alt="닫기">
-    </button>
+<div class="page-container">
+    <!-- 닫기(X) 아이콘 -->
+    <div class="close-section">
+        <button id="close-btn" onclick="history.back()">
+            <img src="{{ url_for('static', filename='images/flat_icon/close-darkest-navy.png') }}" alt="닫기">
+        </button>
+    </div>
+
+    <!-- 여행 데이터 입력 폼 -->
+    <form action="{{ url_for('main.add_travel') }}" method="POST">
+        <div class="input-section">
+            <label for="travel-name">여행 이름:</label>
+            <input type="text" id="travel-name" name="travel-name" required>    
+        </div>
+        <div class="input-section">
+            <label for="country">대륙/국가:</label>
+            <select id="country" name="country" required>
+                <option value="한국">한국</option>
+                <option value="미국">미국</option>
+                <option value="유럽">유럽</option>
+                <option value="일본">일본</option>
+                <option value="중국">중국</option>
+                <option value="영국">영국</option>
+                <option value="호주">호주</option>
+                <option value="베트남">베트남</option>
+                <option value="태국">태국</option>
+                <option value="필리핀">필리핀</option>
+                <option value="싱가포르">싱가포르</option>
+                <option value="대만">대만</option>
+                <option value="일본">인도네시아</option>
+                <option value="일본">홍콩</option>
+            </select>
+        </div>
+        <div class="input-section">
+            <label class="region" for="region">지역:</label>
+            <input type="text" id="region" name="region">
+        </div>
+        <div class="input-section">
+            <label for="budget-won">예산 (원):</label>
+            <input type="number" id="budget-won" name="budget-won" required>
+        </div>
+        
+        <!-- 오류 메시지 -->
+        {% if error %}
+            <p class="error-message">{{ error }}</p>
+        {% endif %}
+
+        <!-- 여행 추가하기 버튼 -->
+        <button class="submit" type="submit">추가하기</button>
+    </form>
 </div>
 
-<form action="{{ url_for('main.add_travel') }}" method="POST">
-    <div class="input-section">
-        <label for="travel-name">여행 이름:</label>
-        <input type="text" id="travel-name" name="travel-name" required>    
-    </div>
-    <div class="input-section">
-        <label for="country">대륙/국가:</label>
-        <select id="country" name="country" required>
-            <option value="한국">한국</option>
-            <option value="미국">미국</option>
-            <option value="유럽">유럽</option>
-            <option value="일본">일본</option>
-            <option value="베트남">베트남</option>
-            <option value="대만">대만</option>
-        </select>
-        </div>
-    <div class="input-section">
-        <label for="region">지역:</label>
-        <input type="text" id="region" name="region">
-    </div>
-    <div class="input-section">
-        <label for="budget-won">예산 (원):</label>
-        <input type="number" id="budget-won" name="budget-won" required>
-    </div>
-    
-    <!-- 오류 메시지 -->
-    {% if error %}
-        <p class="error-message">{{ error }}</p>
-    {% endif %}
-
-    <button class="submit" type="submit">추가하기</button>
-</form>
-
+<!-- 스타일 -->
 <style>
+    .page-container {
+        display: flex;
+        flex-direction: column;
+    }
+
     /* 닫기 버튼 섹션 */
     .close-section {
-        padding: 20px;
+        padding: 30px;
         display: flex;
-        justify-content: right;
+        justify-content: flex-end;
     }
 
     #close-btn {
         background: none;
         border: none;
         cursor: pointer;
+        padding: 0;
     }
 
     #close-btn img {
-        width: 20px;
+        width: 16px;
     }
 
+    /* 폼 섹션 */
     form {
         padding: 0 0 60px;
         display: flexbox;
-        text-align: center;
+        text-align: right;
+        margin: 0 auto;
+        justify-content: center;
     }
 
     .input-section {
-        display: block;
         margin: 20px auto;
     }
 
     label {
         font-size: 16px;
         font-weight: bold;
-        color: var(--color-darker-bluegrey);
+        color: var(--color-darkest-bluegrey);
         margin-right: 10px;
     }
 
     input, select {
-        border: 1px solid var(--color-bluegrey);
-        border-radius: 5px;
         background-color: var(--color-white);
         font-size: 14px;
         color: var(--color-darkest-bluegrey);
         padding: 8px;
+        width: 200px;
+        height: 40px;
+        border: 1px solid var(--color-bluegrey);
+        border-radius: 5px;
+        box-sizing: border-box;
     }
 
     .error-message {

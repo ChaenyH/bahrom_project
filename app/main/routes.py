@@ -115,8 +115,16 @@ def add_travel():
             '미국': 'USD',
             '유럽': 'EUR',
             '일본': 'JPY',
+            '중국': 'CNY',
+            '영국': 'GBP',
+            '호주': 'AUD',
             '베트남': 'VND',
-            '대만': 'NTD'
+            '태국': 'THB',
+            '필리핀': 'PHP',
+            '싱가포르': 'SGD',
+            '대만': 'NTD',
+            '인도네시아': 'IDR',
+            '홍콩': 'HKD',
         }
         currency = COUNTRY_TO_CURRENCY.get(country)
         
