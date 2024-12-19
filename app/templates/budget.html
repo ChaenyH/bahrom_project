@@ -15,17 +15,16 @@
     </div>
 </div>
 
-<!-- 여행 추가하기 섹션 -->
-
 <!-- 로그인이 되어 있고, 등록된 여행 데이터가 존재하는 경우 -->
 {% if user_data and user_data.travels %}
-<div class="add-travel-section">
+<!-- 상단 (토글 섹션) -->
+<div class="toggle-section">
     <button id="travel-list-btn">
         <span id="selected-travel-name">{{ user_data.travels[0].travel_name }}</span>
         <img src="{{ url_for('static', filename='images/flat_icon/down-darkest-navy.png') }}" alt="토글 열기">
     </button>
 </div>
-
+<!-- 여행 메뉴 -->
 <div class="travel-list" id="travel-list" style="display: none;">
     {% for travel in user_data.travels %}
     <div class="travel-inner-list">
@@ -41,8 +40,9 @@
     </div>
 </div>
 
+<!-- 하단 -->
 <div class="travel-budget-dashboard">
-
+    <!-- 여행지 정보 -->
     <div class="description-card">
         <div class="card-header">
             <h2>여행지</h2>
@@ -67,7 +67,7 @@
             </div>
         </div>
     </div>
-
+    <!-- 예산 정보 -->
     <div class="description-card">
         <div class="card-header">
             <h2>예산</h2>
@@ -76,11 +76,11 @@
         <div class="card-descript-section">
             <div class="card-descript-inner-section">
                 <p id="label">쓸 수 있는 금액</p>
-                <p id="description">{{ user_data.travels[0].budget_won }}원</p>
+                <p id="description">{{ "{:,.0f}".format(user_data.travels[0].budget_won) }}원</p>
             </div>
         </div>
     </div>
-
+    <!-- 소비 한 눈에 보기 -->
     <div class="description-card">
         <div class="card-header">
             <h2>소비 한 눈에 보기</h2>
@@ -92,18 +92,25 @@
             </div>    
         </div>
     </div>
-
+    <!-- 소비 내역 추가하기 -->
+     <div class="description-card" id="add-consumption">
+        <button id="add-consumption">
+            소비 내역 추가하기
+            <img src="{{ url_for('static', filename='images/flat_icon/more-darkest-navy.png') }}" alt="여행 추가하기">    
+        </button>
+    </div>
 </div>
 
 <!-- 로그인이 되어있지 않거나, 로그인은 되어있지만 등록된 여행 데이터가 없는 경우 -->
 {% else %}
+<!-- 상단 (토글 섹션) -->
 <div class="add-travel-section">
     <button id="add-travel-btn">
         여행 추가하기
         <img src="{{ url_for('static', filename='images/flat_icon/more-darkest-navy.png') }}" alt="여행 추가하기">
     </button>
 </div>
-
+    <!-- 하단 -->
     <!-- 로그인은 되어있지만 등록된 여행 데이터가 없는 경우 -->
     {% if user_data %}
     <div class="no-trip-section">
@@ -124,6 +131,23 @@
     // Jinja2를 통해 user_data 상태를 JavaScript로 전달
     const userDataExists = {{ 'true' if user_data else 'false' }};
 
+    // 여행 목록 토글 버튼
+    const travelListBtn = document.getElementById('travel-list-btn');
+    const travelList = document.getElementById('travel-list');
+    if (travelListBtn && travelList) {
+        travelListBtn.addEventListener('click', function () {
+            travelList.style.display = travelList.style.display === 'none' ? 'block' : 'none';
+        });
+    }
+
+    // 여행 추가하기 버튼
+    const addConsumptionBtn = document.getElementById('add-consumption');
+    if (addConsumptionBtn) {
+        addConsumptionBtn.addEventListener('click', function () {
+            window.location.href = '/add-consumption';
+        });
+    }
+
     // 여행 추가하기 버튼
     const addTravelBtn = document.getElementById('add-travel-btn');
     if (addTravelBtn) {
@@ -138,13 +162,5 @@
         });
     }
 
-    // 여행 목록 토글 버튼
-    const travelListBtn = document.getElementById('travel-list-btn');
-    const travelList = document.getElementById('travel-list');
-    if (travelListBtn && travelList) {
-        travelListBtn.addEventListener('click', function () {
-            travelList.style.display = travelList.style.display === 'none' ? 'block' : 'none';
-        });
-    }
 </script>
 {% endblock %}

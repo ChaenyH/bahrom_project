@@ -28,36 +28,13 @@ h1 {
     width: 150px;
 }
 
-/* 여행 추가하기 섹션 */
-.add-travel-section {
+/* 토글 섹션 */
+.toggle-section {
     display: flex;
     align-items: center; /* 세로 방향 중앙 정렬 */
     justify-content: center; /* 가로 방향 중앙 정렬 */
     background: var(--color-white);
     border-bottom: 0.5px solid var(--color-bluegrey);
-}
-
-.add-travel-section#add-travel-btn, 
-#travel-list-btn {
-    padding: 30px 0;
-    text-align: center;
-    color: var(--color-darkest-bluegrey);
-    text-decoration: none;
-    border: none;
-    background: none;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.add-travel-section img {
-    width: 24px;
-    vertical-align: middle;
-    padding-left: 5px;
-}
-
-.success-message {
-    color: var(--color-dark-pink);
-    font-weight: bold;
 }
 
 .travel-inner-list {
@@ -69,6 +46,29 @@ h1 {
 }
 .travel-inner-list:hover {
     background: var(--color-light-bluegrey);
+}
+
+.toggle-section #add-travel-btn, 
+#travel-list-btn {
+    padding: 30px 0;
+    text-align: center;
+    color: var(--color-darkest-bluegrey);
+    text-decoration: none;
+    border: none;
+    background: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.toggle-section img {
+    width: 24px;
+    vertical-align: middle;
+    padding-left: 5px;
+}
+
+.success-message {
+    color: var(--color-dark-pink);
+    font-weight: bold;
 }
 
 .inlist-travel-name {
@@ -99,11 +99,11 @@ h1 {
 
 /* 대시보드 */
 .travel-budget-dashboard {
-    margin: 40px 0;
+    margin: 20px 0 40px;
 }
 
 .description-card {
-    margin: 10px auto;
+    margin: 15px auto;
     padding: 20px 20px 10px;
     background: var(--color-white);
     border-radius: 16px;
@@ -151,6 +151,27 @@ h1 {
     font-weight: bold;
     margin: 6px 0 20px;
     color: var(--color-darkest-navy);
+}
+
+.description-card#add-consumption {
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 20px;
+}
+
+button#add-consumption {
+    border: none;
+    background: none;
+    font-size: 18px;
+    color: var(--color-darkest-navy)
+}
+
+.description-card#add-consumption img {
+    width: 22px;
+    vertical-align: middle;
+    padding-left: 5px;
 }
 
 @media (max-width: 768px) {

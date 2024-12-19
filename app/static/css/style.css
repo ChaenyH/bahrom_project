@@ -116,6 +116,10 @@ body {
     display: flex;
 }
 
+#nav-menu {
+    height: 1000%;
+}
+
 .nav-menu-wrapper {
     border-bottom: 0.5px solid var(--color-bluegrey);
     padding: 23px 24px;
@@ -137,7 +141,7 @@ body {
     color: var(--color-dark-pink);
     font-size: 16px;
     font-weight: bold;
-    margin: 22px 0 22px;
+    margin: 60px 0 40px;
 }
 
 .nav-button-wrapper {
@@ -152,12 +156,12 @@ body {
 
 #logout-btn {
     background: var(--color-white);
-    margin: 0 auto 200px;
+    margin: 0 auto;
 }
 
 #login-btn {
     background: var(--color-skyblue);
-    margin: 60px auto 200px;
+    margin: 60px auto 240px;
 }
 
 .nav-button {

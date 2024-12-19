@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}여행에서의 윤리적 소비 - 여행 추가하기{% endblock %}
+{% block title %}여행에서의 윤리적 소비 - 소비 내역 추가하기{% endblock %}
 
 {% block content %}
 <div class="page-container">
@@ -10,42 +10,46 @@
             <img src="{{ url_for('static', filename='images/flat_icon/close-darkest-navy.png') }}" alt="닫기">
         </button>
     </div>
-    
+
     <!-- 타이틀 -->
-    <h2>🛫 여행 추가하기 🛬</h2>
+    <h2>💸 소비 내역 추가하기 💸</h2>
 
     <!-- 여행 데이터 입력 폼 -->
-    <form action="{{ url_for('main.add_travel') }}" method="POST">
+    <form action="{{ url_for('main.add_consumption') }}" method="POST">
         <div class="input-section">
-            <label for="travel-name">*여행 이름:</label>
-            <input type="text" id="travel-name" name="travel-name" required>    
+            <label for="consume-name">*소비처:</label>
+            <input type="text" id="consume-name" name="consume-name" placeholder="e.g. 공항 면세점" required>    
         </div>
         <div class="input-section">
-            <label for="country">*대륙/국가:</label>
-            <select id="country" name="country" required>
-                <option value="한국">한국</option>
-                <option value="미국">미국</option>
-                <option value="유럽">유럽</option>
-                <option value="일본">일본</option>
-                <option value="중국">중국</option>
-                <option value="영국">영국</option>
-                <option value="호주">호주</option>
-                <option value="베트남">베트남</option>
-                <option value="태국">태국</option>
-                <option value="필리핀">필리핀</option>
-                <option value="싱가포르">싱가포르</option>
-                <option value="대만">대만</option>
-                <option value="일본">인도네시아</option>
-                <option value="일본">홍콩</option>
+            <label for="consume-description">설명:</label>
+            <input type="text" id="consume-description" name="consume-description" placeholder="e.g. 망고 젤리 3봉지">
+        </div>
+        <div class="input-section">
+            <label for="amount-exchanged">*가격:</label>
+            <input type="text" id="amount-exchanged" name="amount-exchanged" required>
+        </div>
+        <div class="input-section">
+            <label for="category">*분류:</label>
+            <select id="category" name="category" required>
+                <option value="식비">식비</option>
+                <option value="교통">교통비</option>
+                <option value="숙박">숙박비</option>
+                <option value="관광">관광 (입장료, 체험, 대여 등)</option>
+                <option value="쇼핑">쇼핑 (기념품, 선물 등)</option>
+                <option value="기타">기타</option>
             </select>
         </div>
         <div class="input-section">
-            <label class="region" for="region">지역:</label>
-            <input type="text" id="region" name="region">
+            <label for="payment">결제 수단:</label>
+            <select id="payment" name="payment">
+                <option value="현금">현금</option>
+                <option value="카드">카드</option>
+                <option value="기타">기타</option>
+            </select>
         </div>
         <div class="input-section">
-            <label for="budget-won">*예산 (원):</label>
-            <input type="text" id="budget-won" name="budget-won" required>
+            <label for="memo">기타 메모:</label>
+            <input type="text" id="memo" name="memo" placeholder="(선택)">
         </div>
         
         <!-- 오류 메시지 -->
@@ -53,14 +57,14 @@
             <p class="error-message">{{ error }}</p>
         {% endif %}
 
-        <!-- 여행 추가하기 버튼 -->
+        <!-- 추가하기 버튼 -->
         <button class="submit" type="submit">추가</button>
     </form>
 </div>
 
 <!-- 스크립트 -->
 <script>
-    const input = document.querySelector('#budget-won');
+    const input = document.querySelector('#budget-exchanged');
     const form = document.querySelector('form'); // 폼 선택
 
     input.addEventListener('input', function (e) {

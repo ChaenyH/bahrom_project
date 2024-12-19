@@ -161,3 +161,7 @@ def add_travel():
         return redirect(url_for('main.budget'))  # PRG 패턴 적용
     
     return render_template('add_travel.html')
+
+@main.route('/add-consumption', methods=['GET', 'POST'])
+def add_consumption():
+    return render_template('add_consumption.html')

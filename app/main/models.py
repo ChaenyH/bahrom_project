@@ -16,19 +16,17 @@ class User(db.Model):
     created_at = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)  # UTC 시간 저장 (사용자 생성 시간)
 
     # 사용자별 지출 데이터를 연결하기 위해 Expense 모델과 관계를 정의
-    expenses = db.relationship('Expense', backref='user', lazy='joined')
     travels = db.relationship('Travel', backref='user', lazy='joined')
+    expenses = db.relationship('Expense', backref='user', lazy='joined')
 
     # 비밀번호 설정 메서드
     def set_password(self, password):
         from werkzeug.security import generate_password_hash
-        # generate_password_hash(password)는 주어진 비밀번호를 안전하게 해싱합니다.
         self.password_hash = generate_password_hash(password)
 
     # 비밀번호 검증 메서드
     def check_password(self, password):
         from werkzeug.security import check_password_hash
-        # check_password_hash(stored_hash, password)는 저장된 해시와 입력된 비밀번호를 비교합니다.
         return check_password_hash(self.password_hash, password)
 
     def __repr__(self):
@@ -45,21 +43,17 @@ class Travel(db.Model):
     budget_exchanged = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
+    def __repr__(self):
+        return f'<Travel {self.id}: {self.travel_name} - {self.country} - {self.budget_won}>'
+
 # 지출 정보를 관리하는 데이터 모델
 class Expense(db.Model):
-    from datetime import date
-    from sqlalchemy import Enum
-
     id = db.Column(db.Integer, primary_key=True)  # 고유 식별자
-    # 날짜 데이터를 다룰 때는 String보다 Date 타입을 사용하는 것이 더 적합
-    date = db.Column(db.Date, nullable=False)  # 지출 날짜
-    category = db.Column(db.Enum(  # 지출 카테고리
-        'Food', 'Transport', 'Shopping', 'Other', name='expense_category'  # 카테고리 제한
-        ), nullable=False)
+    date = db.Column(db.DateTime, default=db.func.now(), nullable=False)
+    category = db.Column(ENUM('식비', '교통', '숙박', '관광', '쇼핑', '기타', name='expense_category'), nullable=False)
     amount = db.Column(db.Float, nullable=False)  # 지출 금액
-    memo = db.Column(db.String(200))  # 메모(선택 사항)
-    
-    # 사용자와 지출 간의 관계를 정의:
+    payment_method = db.Column(db.String(20), nullable=False)  # 결제 수단 (현금, 카드 등)
+    memo = db.Column(db.String(200), nullable=True)  # 메모(선택 사항)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     # __repr__ 메서드는 디버깅 및 로깅 시 객체를 명확히 식별하는 데 유용합니다.
