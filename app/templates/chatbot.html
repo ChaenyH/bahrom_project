@@ -2,26 +2,25 @@
 
 {% block title %}여행에서의 윤리적 소비 - 소비 챗봇{% endblock %}
 
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/chatbot.css') }}">
+{% endblock %}
+
 {% block content %}
 <div class="intro-section">
     <h1 class="chat-title">소비 챗봇</h1>
 </div>
 <div class="chat-section">
     <!-- 대화 내용이 여기에 추가됩니다 -->
-    <div class="chat-window" id="bot-message">
+    <div class="chat-window bot-message">
         <img src="{{ url_for('static', filename='images/swu/thinkbear_head.png') }}" alt="띵곰이" class="bot-icon">
         <div class="chat-inner-window">
             <div class="chat-message">
-                안녕! 나는 {{ user_data.username }}의 윤리적 소비를 도우러 온 띵곰이야.
+                안녕? 나는 {{ user_data.username }}의 윤리적 소비를 도우러 온 띵곰이야.
             </div>
             <div class="chat-message">
                 소비와 관련해서 궁금한게 있다면 뭐든 답해줄게!
             </div>
-        </div>
-    </div>
-    <div class="chat-window" id="user-message">
-        <div class="chat-message">
-            프랜차이즈가 지역 경제에 부정적 역할을 하는 이유가 뭐야?
         </div>
     </div>
 </div>
@@ -33,140 +32,12 @@
         </button>
     </div>    
 </div>
+{% endblock %}
 
+{% block footer %}
+<!-- 이 블록을 비워서 footer를 제거합니다 -->
+{% endblock %}
 
-<!-- 스크립트 -->
-<script>
-    // 전송 버튼 클릭 이벤트
-    const chatSendButton = document.getElementById('chat-send-button');
-    const chatInput = document.getElementById('chat-input');
-    const chatWindow = document.getElementById('chat-window');
-
-    chatSendButton.addEventListener('click', function () {
-        const userMessage = chatInput.value.trim();
-        if (userMessage) {
-            // 사용자 메시지 추가
-            const userMessageDiv = document.createElement('div');
-            userMessageDiv.classList.add('chat-message', 'user-message');
-            userMessageDiv.innerHTML = `<p>${userMessage}</p>`;
-            chatWindow.appendChild(userMessageDiv);
-
-            chatInput.value = ''; // 입력창 초기화
-            chatWindow.scrollTop = chatWindow.scrollHeight; // 최신 메시지로 스크롤
-        }
-    });
-</script>
-
-<!-- 스타일 -->
-<style>
-    .intro-section {
-        height: 100px;
-        background: var(--color-dark-pink);
-        border-bottom: 0.5px solid var(--color-bluegrey);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    h1 {
-        font-size: 32px;
-        padding: 0;
-        margin: 0;
-        color: var(--color-white);
-        text-shadow: 
-            -1px -1px 0 var(--color-darkest-navy), /* 왼쪽 위 */
-            1px -1px 0 var(--color-darkest-navy),  /* 오른쪽 위 */
-            -1px 1px 0 var(--color-darkest-navy),  /* 왼쪽 아래 */
-            1px 1px 0 var(--color-darkest-navy);   /* 오른쪽 아래 */
-    }
-
-    .chat-section {
-        margin: 0 auto;
-        padding: 10px 15px;
-        background-color: var(--color-white);
-    }
-
-    .chat-window img {
-        width: 50px;
-        height: 41px;
-        margin: 0 10px 10px 0;
-    }
-
-    .chat-window {
-        display: flex;
-        align-items: end;
-        margin-bottom: 5px;
-    }
-
-    .chat-window#bot-message {
-        justify-content: flex-start;
-    }
-
-    .chat-window#user-message {
-        justify-content: flex-end;
-    }
-
-    .chat-inner-window {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .chat-message {
-        margin: 5px 0;
-        padding: 15px 20px;
-        border-radius: 16px;
-        font-size: 14px;
-        line-height: 20px;
-        color: var(--color-darkest-navy);
-    }
-
-    #bot-message .chat-message {
-        max-width: 210px;
-        background-color: var(--color-light-bluegrey);
-    }
-
-    #user-message .chat-message {
-        max-width: 230px;
-        background-color: var(--color-light-pink);
-    }
-
-    .chat-input-section {
-        background: var(--color-white);
-        margin: 0;
-        padding: 10px 0;
-    }
-
-    .chat-input-inner-section {
-        width: 95%;
-        display: flex;
-        align-items: center;
-        background: var(--color-light-bluegrey);
-        height: 50px;
-        border-radius: 24px;
-        margin: auto;
-    }
-
-    #chat-input {
-        display: flex;
-        align-items: center; /* 세로 방향 중앙 정렬 */
-        justify-content: space-between; /* 요소들 사이에 여백 추가 */
-        flex: 1; /* 입력창이 남은 공간을 채우도록 설정 */
-        border-radius: 8px;
-        font-size: 14px;
-        border: none;
-        background: none;
-        margin: 10px 20px;
-    }
-
-    #chat-send-button {
-        border: none;
-        background: none;
-        cursor: pointer;
-    }
-
-    #chat-send-button img {
-        width: 24px;
-        margin-right: 10px;
-    }
-</style>
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
 {% endblock %}

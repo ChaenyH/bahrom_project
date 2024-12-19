@@ -1,0 +1,117 @@
+.intro-section {
+    height: 80px;
+    background: var(--color-dark-pink);
+    border-bottom: 0.5px solid var(--color-bluegrey);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 32px;
+    padding: 0;
+    margin: 0;
+    color: var(--color-white);
+    text-shadow: 
+        -1px -1px 0 var(--color-darkest-navy), /* 왼쪽 위 */
+        1px -1px 0 var(--color-darkest-navy),  /* 오른쪽 위 */
+        -1px 1px 0 var(--color-darkest-navy),  /* 왼쪽 아래 */
+        1px 1px 0 var(--color-darkest-navy);   /* 오른쪽 아래 */
+}
+
+.chat-section {
+    margin: 0 auto;
+    padding: 10px 15px;
+    background-color: var(--color-white);
+    /* 풋터가 보이지 않도록 높이와 스크롤 설정 */
+    height: calc(100vh - 250px); /* 헤더(100px) + 입력창(70px)의 높이를 제외한 영역 */
+    overflow-y: auto; /* 스크롤 가능하도록 설정 */    
+}
+
+.chat-window img {
+    width: 50px;
+    height: 41px;
+    margin: 0 10px 10px 0;
+}
+
+.chat-window {
+    display: flex;
+    align-items: end;
+    margin-bottom: 5px;
+}
+
+.chat-window.bot-message {
+    justify-content: flex-start;
+}
+
+.chat-window.user-message {
+    justify-content: flex-end;
+}
+
+.chat-inner-window {
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-message {
+    margin: 5px 0;
+    padding: 15px 20px;
+    border-radius: 16px;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--color-darkest-navy);
+}
+
+.bot-message .chat-message {
+    max-width: 210px;
+    background-color: var(--color-light-bluegrey);
+}
+
+.user-message .chat-message {
+    max-width: 230px;
+    background-color: var(--color-light-pink);
+}
+
+.chat-input-section {
+    background: var(--color-white);
+    margin: 0;
+    padding: 10px 0;
+    /* 고정 위치 설정 */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.chat-input-inner-section {
+    width: 95%;
+    display: flex;
+    align-items: center;
+    background: var(--color-light-bluegrey);
+    height: 50px;
+    border-radius: 24px;
+    margin: auto;
+}
+
+#chat-input {
+    display: flex;
+    align-items: center; /* 세로 방향 중앙 정렬 */
+    justify-content: space-between; /* 요소들 사이에 여백 추가 */
+    flex: 1; /* 입력창이 남은 공간을 채우도록 설정 */
+    border-radius: 8px;
+    font-size: 14px;
+    border: none;
+    background: none;
+    margin: 10px 20px;
+}
+
+#chat-send-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+#chat-send-button img {
+    width: 24px;
+    margin-right: 10px;
+}

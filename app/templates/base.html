@@ -68,6 +68,7 @@
         {% block content %}{% endblock %}
     </div>
 
+    {% block footer %}
     <footer class="footer">
         <div class="footer-links">
             <a href="https://www.youtube.com/user/seoulwomensuniv" target="_blank">서울여대 유튜브</a>
@@ -80,6 +81,7 @@
             <p class="email-info">문의 hxchaeny@swu.ac.kr</p>
         </div>
     </footer>
+    {% endblock %}
 
     <script src="{{ url_for('static', filename='js/base_script.js') }}"></script>
     {% block scripts %}{% endblock %}
