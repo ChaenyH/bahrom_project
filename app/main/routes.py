@@ -165,3 +165,10 @@ def add_travel():
 @main.route('/add-consumption', methods=['GET', 'POST'])
 def add_consumption():
     return render_template('add_consumption.html')
+
+
+@main.route('/chatbot')
+def chatbot():
+    if 'user_id' not in session:  # 세션에 사용자 ID가 없으면 로그인 필요
+        return redirect(url_for('main.login'))  # 로그인 페이지로 리다이렉트
+    return render_template('chatbot.html')  # 로그인된 상태에서만 챗봇 페이지 렌더링

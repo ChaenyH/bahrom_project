@@ -49,7 +49,7 @@
                 <a class="nav-link" href="/budget">윤리 가계부</a>
             </div>
             <div class="nav-menu-wrapper">
-                <a class="nav-link" href="/budget">소비 챗봇</a>
+                <a id="chatbot-btn" class="nav-link" href="/chatbot">소비 챗봇</a>
             </div>
             {% if user_data %}
             <p class="greeting">{{ user_data.username }} 님, 환영합니다!</p>
@@ -81,7 +81,7 @@
         </div>
     </footer>
 
-    <script src="{{ url_for('static', filename='js/navToggle.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/base_script.js') }}"></script>
     {% block scripts %}{% endblock %}
 </body>
 </html>
